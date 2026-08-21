@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTD Express Autofill</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <div class="header-brand">
+          <span class="header-icon">🛕</span>
+          <h1>TTD Autofill</h1>
+        </div>
+        <div class="header-actions">
+          <button id="btn-theme-toggle" class="header-btn" title="Toggle Light/Dark Theme">🌓</button>
+          <button id="btn-open-vault" class="header-btn" title="Open Family Vault Dashboard">⚙️ Vault</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Tab Bar -->
+      <div class="tab-nav-row">
+        <div class="tab-nav" id="tab-nav-list">
+          <button class="tab-btn active" data-tab="0">Pilgrim 1</button>
+          <button class="tab-btn" data-tab="1">Pilgrim 2</button>
+          <button class="tab-btn" data-tab="2">Pilgrim 3</button>
+          <button class="tab-btn" data-tab="3">Pilgrim 4</button>
+          <button class="tab-btn" data-tab="4">Pilgrim 5</button>
+          <button class="tab-btn" data-tab="5">Pilgrim 6</button>
+          <button class="tab-btn" data-tab="srivani">Srivani</button>
+          <button class="tab-btn" data-tab="seva">Seva</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Big Iconic Fill All Button -->
+      <div class="fill-all-section">
+        <button id="btn-fill-all" class="btn-fill-all">
+          <span>⚡ Fill All Details</span>
+          <span style="font-size: 0.8rem; opacity: 0.85;">(Alt+A)</span>
+        </button>
+        <a href="https://ttdevasthanams.ap.gov.in" target="_blank" class="booking-link-small">Open Official TTD Website ↗</a>
+      </div>
+
+      <!-- Quick Vault Picker -->
+      <div class="vault-picker" id="vault-picker-box">
+        <button class="vault-picker-toggle" id="btn-vault-toggle">
+          <span>👥 Pick from Saved Family Vault</span>
+          <span id="vault-arrow">▼</span>
+        </button>
+        <div class="vault-picker-list" id="vault-picker-list" style="display: none;">
+          <!-- Dynamically filled with saved profiles -->
+        </div>
+      </div>
+
+      <!-- Active Pilgrim Form View -->
+      <div id="pilgrim-form-area">
+        <div class="form-section">
+          <h3 id="current-tab-title">Pilgrim 1 Details</h3>
+
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="p-name" placeholder="As printed on ID proof">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Age *</label>
+              <input type="number" id="p-age" min="1" max="120" placeholder="e.g. 45">
+            </div>
+            <div class="form-group">
+              <label>Gender *</label>
+              <select id="p-gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Transgender">Transgender</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>ID Proof Type *</label>
+              <select id="p-id-type">
+                <option value="Aadhaar Card">Aadhaar Card</option>
+                <option value="Passport">Passport</option>
+                <option value="Voter ID">Voter ID</option>
+                <option value="PAN Card">PAN Card</option>
+                <option value="Driving License">Driving License</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>ID Number *</label>
+              <div class="input-reveal">
+                <input type="password" id="p-id-number" placeholder="12-digit Aadhaar / ID">
+                <button type="button" id="btn-toggle-id-reveal" class="reveal-btn">Show</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passport specific fields (shown if Passport chosen) -->
+          <div id="passport-extra-fields" style="display: none;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Passport Country</label>
+                <input type="text" id="p-pass-country" placeholder="e.g. USA / India">
+              </div>
+              <div class="form-group">
+                <label>Visa Number</label>
+                <input type="text" id="p-visa-number" placeholder="Visa / OCI No.">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <input type="text" id="p-mobile" placeholder="10-digit mobile">
+            </div>
+            <div class="form-group">
+              <label>State</label>
+              <select id="p-state">
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="p-city" placeholder="City / Town">
+            </div>
+            <div class="form-group">
+              <label>Pincode</label>
+              <input type="text" id="p-pincode" placeholder="6-digit PIN">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btn-save-current" class="btn-primary">💾 Save Pilgrim</button>
+          <button id="btn-clear-current" class="btn-secondary">🗑️ Clear</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Support Link -->
+    <div style="padding: 6px 16px 10px; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.72rem; color: var(--text-muted);">
+      Support: <a href="mailto:virat1sj20@gmail.com" style="color: var(--primary-color); font-weight: 700; text-decoration: none;">virat1sj20@gmail.com</a>
+    </div>
+
+    <!-- Toast Banner -->
+    <div id="toast-msg" class="toast-msg">Details Saved!</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

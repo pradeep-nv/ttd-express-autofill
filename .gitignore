@@ -1,0 +1,20 @@
+# Chrome Extension Keys & Builds (CRITICAL - Keep Private)
+*.pem
+*.crx
+*.zip
+
+# Environment & Secrets
+.env
+.env.*
+*.secret
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# Dependencies (if any)
+node_modules/
+dist/

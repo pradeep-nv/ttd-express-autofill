@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTD Express Autofill - Options & Family Vault</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="opt-root">
+    <!-- Sidebar -->
+    <aside class="opt-sidebar">
+      <div class="opt-brand">
+        <span class="opt-brand-mark">🛕</span>
+        <div>
+          <div class="opt-brand-title">TTD Express</div>
+          <div class="opt-brand-sub">Autofill</div>
+        </div>
+      </div>
+
+      <nav class="opt-nav">
+        <button class="opt-nav-item is-active" data-route="dashboard">
+          <span class="opt-nav-icon">🏠</span>
+          <span>Dashboard</span>
+        </button>
+        <button class="opt-nav-item" data-route="family-vault">
+          <span class="opt-nav-icon">👨‍👩‍👧</span>
+          <span>Saved Pilgrims</span>
+        </button>
+        <button class="opt-nav-item" data-route="sets">
+          <span class="opt-nav-icon">🗂️</span>
+          <span>Pilgrim Sets</span>
+        </button>
+        <button class="opt-nav-item" data-route="backup">
+          <span class="opt-nav-icon">💾</span>
+          <span>Backup & Restore</span>
+        </button>
+        <button class="opt-nav-item" data-route="trust">
+          <span class="opt-nav-icon">🛡️</span>
+          <span>Trust Center</span>
+        </button>
+      </nav>
+
+      <button class="opt-nav-item opt-nav-quiet" id="btn-open-guide">
+        <span class="opt-nav-icon">🙏</span>
+        <span>Welcome guide</span>
+      </button>
+    </aside>
+
+    <!-- Main Screens Container -->
+    <main class="opt-main">
+      <!-- 1. DASHBOARD SCREEN -->
+      <div id="screen-dashboard" class="opt-screen">
+        <header class="opt-screen-head">
+          <div>
+            <h1>Welcome back 🙏</h1>
+            <p class="opt-muted">Prepare calmly, before booking opens.</p>
+          </div>
+        </header>
+
+        <div class="opt-dash-grid">
+          <!-- Readiness Box -->
+          <section class="opt-readiness opt-readiness-good">
+            <div class="opt-readiness-score">
+              <div class="opt-readiness-num" id="dash-score-num">95<span>/100</span></div>
+              <div class="opt-readiness-label">Booking readiness</div>
+            </div>
+            <div class="opt-readiness-bar">
+              <div id="dash-readiness-bar-fill" style="width: 95%;"></div>
+            </div>
+            <ul class="opt-readiness-checks" id="dash-readiness-list">
+              <li><span class="opt-dot-status opt-dot-success"></span><span>Pilgrims saved with valid ID proofs</span></li>
+              <li><span class="opt-dot-status opt-dot-success"></span><span>Contact numbers and address filled</span></li>
+              <li><span class="opt-dot-status opt-dot-success"></span><span>Ready on official TTD booking portal</span></li>
+            </ul>
+          </section>
+
+          <!-- Stats -->
+          <div class="opt-dash-stats">
+            <button class="opt-stat" id="stat-pilgrims-btn">
+              <div class="opt-stat-value" id="stat-pilgrims-count">4</div>
+              <div class="opt-stat-label">Saved Pilgrims in Vault</div>
+            </button>
+            <button class="opt-stat" id="stat-sets-btn">
+              <div class="opt-stat-value" id="stat-sets-count">2</div>
+              <div class="opt-stat-label">Pilgrim Groups / Sets</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Actions Grid -->
+        <section class="opt-quick">
+          <h2 class="opt-h2">Quick actions</h2>
+          <div class="opt-quick-grid">
+            <button class="opt-quick-action" id="qa-add-pilgrim"><span class="opt-quick-icon">➕</span>Add Pilgrim</button>
+            <button class="opt-quick-action" id="qa-manage-sets"><span class="opt-quick-icon">🗂️</span>Manage Sets</button>
+            <button class="opt-quick-action" id="qa-backup"><span class="opt-quick-icon">💾</span>Backup Data</button>
+            <button class="opt-quick-action" id="qa-ttd"><span class="opt-quick-icon">🌐</span>Open TTD Site</button>
+          </div>
+        </section>
+
+        <!-- Privacy Assurance Card -->
+        <section class="opt-privacy">
+          <div class="opt-privacy-head">
+            <span class="opt-privacy-icon">🔒</span>
+            <div>
+              <strong>Private booking data, 100% stored locally</strong>
+              <p class="opt-muted opt-small">Pilgrim details stay entirely inside your browser's local sandbox.</p>
+            </div>
+          </div>
+          <ul class="opt-privacy-list">
+            <li><span>🌐</span><span>Served locally from the extension. Never contacts external analytics servers.</span></li>
+            <li><span>💻</span><span>Your Aadhaar/Passport numbers are saved only in this computer's storage.</span></li>
+            <li><span>🚫</span><span>Your data is never uploaded or shared with anyone.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- 2. SAVED PILGRIMS (FAMILY VAULT) SCREEN -->
+      <div id="screen-family-vault" class="opt-screen" style="display: none;">
+        <header class="opt-screen-head">
+          <div>
+            <h1>Saved Pilgrims (Family Vault)</h1>
+            <p class="opt-muted">Saved pilgrims ready to autofill. Stored securely on this browser.</p>
+          </div>
+          <button class="opt-btn opt-btn-primary" id="btn-vault-add-new">+ Add pilgrim</button>
+        </header>
+
+        <div class="opt-card-grid" id="vault-cards-grid">
+          <!-- Dynamically populated with vault cards -->
+        </div>
+
+        <!-- Add / Edit Pilgrim Form Modal / Area -->
+        <div id="vault-form-area" style="display: none;" class="opt-form-container">
+          <h2 class="opt-h2" id="vault-form-title">Add Pilgrim</h2>
+          <div class="opt-form">
+            <div class="opt-form-row">
+              <label class="opt-field">
+                <span class="opt-field-label">Full Name <span class="opt-req">*</span></span>
+                <input type="text" id="vf-name" placeholder="As printed on official ID" required>
+              </label>
+              <label class="opt-field">
+                <span class="opt-field-label">Relationship</span>
+                <select id="vf-relation">
+                  <option value="Self">Self</option>
+                  <option value="Spouse">Spouse</option>
+                  <option value="Father">Father</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Son">Son</option>
+                  <option value="Daughter">Daughter</option>
+                  <option value="Brother">Brother</option>
+                  <option value="Sister">Sister</option>
+                  <option value="Grandfather">Grandfather</option>
+                  <option value="Grandmother">Grandmother</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="opt-form-row">
+              <label class="opt-field">
+                <span class="opt-field-label">Gender <span class="opt-req">*</span></span>
+                <select id="vf-gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Transgender">Transgender</option>
+                </select>
+              </label>
+              <label class="opt-field">
+                <span class="opt-field-label">Age</span>
+                <input type="number" id="vf-age" min="1" max="120" placeholder="e.g. 45">
+              </label>
+            </div>
+
+            <fieldset class="opt-fieldset">
+              <legend>Identity & ID Proof</legend>
+              <div class="opt-form-row">
+                <label class="opt-field">
+                  <span class="opt-field-label">ID Proof Type</span>
+                  <select id="vf-id-type">
+                    <option value="Aadhaar Card">Aadhaar Card</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Voter ID">Voter ID</option>
+                    <option value="PAN Card">PAN Card</option>
+                    <option value="Driving License">Driving License</option>
+                  </select>
+                </label>
+                <label class="opt-field">
+                  <span class="opt-field-label">ID Proof Number</span>
+                  <input type="text" id="vf-id-number" placeholder="12-digit Aadhaar / ID Card No.">
+                </label>
+              </div>
+
+              <!-- Passport fields -->
+              <div id="vf-passport-row" class="opt-form-row" style="display: none;">
+                <label class="opt-field">
+                  <span class="opt-field-label">Passport Country</span>
+                  <input type="text" id="vf-pass-country" placeholder="e.g. USA / India">
+                </label>
+                <label class="opt-field">
+                  <span class="opt-field-label">Visa / OCI Number</span>
+                  <input type="text" id="vf-visa-number" placeholder="Visa Number">
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="opt-fieldset">
+              <legend>Contact & Address</legend>
+              <div class="opt-form-row">
+                <label class="opt-field">
+                  <span class="opt-field-label">Mobile Number</span>
+                  <input type="text" id="vf-mobile" placeholder="10 digits">
+                </label>
+                <label class="opt-field">
+                  <span class="opt-field-label">State</span>
+                  <input type="text" id="vf-state" value="Andhra Pradesh">
+                </label>
+                <label class="opt-field">
+                  <span class="opt-field-label">City</span>
+                  <input type="text" id="vf-city" placeholder="City / Town">
+                </label>
+                <label class="opt-field">
+                  <span class="opt-field-label">Pincode</span>
+                  <input type="text" id="vf-pincode" placeholder="6 digits">
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="opt-form-actions">
+              <button type="button" class="opt-btn opt-btn-ghost" id="btn-vf-cancel">Cancel</button>
+              <button type="button" class="opt-btn opt-btn-primary" id="btn-vf-save">Save to Vault</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PILGRIM SETS SCREEN -->
+      <div id="screen-sets" class="opt-screen" style="display: none;">
+        <header class="opt-screen-head">
+          <div>
+            <h1>Pilgrim Sets</h1>
+            <p class="opt-muted">Group people you often book together to populate all 6 slots in one click.</p>
+          </div>
+        </header>
+
+        <div class="opt-set-create">
+          <input type="text" id="input-new-set-name" placeholder="New set name (e.g. Parents, Family (4), Friends)">
+          <button class="opt-btn opt-btn-primary" id="btn-create-set">+ Create set</button>
+        </div>
+
+        <div class="opt-set-list" id="sets-list-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- 4. BACKUP & RESTORE SCREEN -->
+      <div id="screen-backup" class="opt-screen" style="display: none;">
+        <header class="opt-screen-head">
+          <div>
+            <h1>Backup & Restore</h1>
+            <p class="opt-muted">Move your devotee data to a new browser or keep a safe offline copy.</p>
+          </div>
+        </header>
+
+        <div class="opt-backup-grid">
+          <!-- Export -->
+          <section class="opt-backup-card">
+            <h2 class="opt-h2">Export</h2>
+            <p class="opt-muted opt-small">Download a backup file of all your saved pilgrims and sets.</p>
+            <button class="opt-btn opt-btn-primary" id="btn-export-backup">Download Backup JSON</button>
+          </section>
+
+          <!-- Restore -->
+          <section class="opt-backup-card">
+            <h2 class="opt-h2">Restore</h2>
+            <p class="opt-muted opt-small">Import a backup file to restore your saved pilgrim profiles.</p>
+            <input type="file" id="input-restore-file" accept=".json" class="opt-file-input">
+          </section>
+        </div>
+      </div>
+
+      <!-- 5. TRUST CENTER SCREEN -->
+      <div id="screen-trust" class="opt-screen" style="display: none;">
+        <header class="opt-screen-head">
+          <div>
+            <h1>Trust Center</h1>
+            <p class="opt-muted">Exactly what this tool does — and the lines it will never cross.</p>
+          </div>
+        </header>
+
+        <section class="opt-trust-grid">
+          <div class="opt-trust-card">
+            <span class="opt-trust-icon">👆</span>
+            <strong>Autofill only on your click</strong>
+            <p class="opt-muted opt-small">The extension acts only when you press the fill button.</p>
+          </div>
+          <div class="opt-trust-card">
+            <span class="opt-trust-icon">🚫</span>
+            <strong>Never bypasses security</strong>
+            <p class="opt-muted opt-small">It does not solve CAPTCHAs, read OTPs, or touch payments.</p>
+          </div>
+          <div class="opt-trust-card">
+            <span class="opt-trust-icon">💻</span>
+            <strong>Your data stays on this browser</strong>
+            <p class="opt-muted opt-small">Profiles are saved strictly in this browser's local sandbox storage.</p>
+          </div>
+          <div class="opt-trust-card">
+            <span class="opt-trust-icon">🏛️</span>
+            <strong>Independent Helper</strong>
+            <p class="opt-muted opt-small">Created by devotees for devotees to spare high-pressure rush.</p>
+          </div>
+        </section>
+
+        <!-- Support & Contact -->
+        <section class="opt-trust-card" style="margin-top: 20px; border-color: var(--primary-color);">
+          <span class="opt-trust-icon">✉️</span>
+          <strong>Developer Support & Contact</strong>
+          <p class="opt-muted opt-small">For questions, feedback, or assistance, contact: <a href="mailto:virat1sj20@gmail.com" style="color: var(--primary-color); font-weight: 700;">virat1sj20@gmail.com</a></p>
+        </section>
+
+        <!-- Danger Zone -->
+        <section class="opt-danger-zone" style="margin-top: 24px;">
+          <h2 class="opt-h2 opt-danger-text">Delete saved profiles & preferences</h2>
+          <p class="opt-muted opt-small">Permanently removes all saved pilgrims, sets, and preferences from this browser.</p>
+          <div class="opt-danger-confirm" style="margin-top: 10px;">
+            <input type="text" id="input-danger-confirm" placeholder="Type DELETE to confirm">
+            <button class="opt-btn opt-btn-danger" id="btn-danger-delete" disabled>Delete saved data</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

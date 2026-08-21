@@ -1,0 +1,62 @@
+{
+   "manifest_version": 3,
+   "name": "TTD Express Autofill",
+   "version": "7.0.1",
+   "description": "Premium autofill assistant for TTD services.",
+   "default_locale": "en",
+   "icons": {
+      "16": "icon-16.png",
+      "32": "icon-32.png",
+      "48": "icon-48.png",
+      "128": "chrome_store_icon_128_clean.png"
+   },
+   "action": {
+      "default_icon": {
+         "16": "icon-16.png",
+         "32": "icon-32.png",
+         "48": "icon-48.png",
+         "128": "chrome_store_icon_128_clean.png"
+      },
+      "default_popup": "src/popup/index.html"
+   },
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "src/options/index.html"
+   },
+   "background": {
+      "service_worker": "service-worker-loader.js",
+      "type": "module"
+   },
+   "permissions": [
+      "storage",
+      "alarms",
+      "activeTab"
+   ],
+   "content_scripts": [
+      {
+         "js": [
+            "assets/autofill.js-CMTxtjwz.js"
+         ],
+         "matches": [
+            "https://tirupatibalaji.ap.gov.in/*",
+            "https://ttdevasthanams.ap.gov.in/*",
+            "http://localhost/*",
+            "http://127.0.0.1/*"
+         ]
+      }
+   ],
+   "web_accessible_resources": [
+      {
+         "matches": [
+            "https://tirupatibalaji.ap.gov.in/*",
+            "https://ttdevasthanams.ap.gov.in/*",
+            "http://localhost/*",
+            "http://127.0.0.1/*"
+         ],
+         "resources": [
+            "assets/autofill.js-CMTxtjwz.js"
+         ],
+         "use_dynamic_url": false
+      }
+   ]
+}
