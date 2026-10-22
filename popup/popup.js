@@ -200,7 +200,22 @@ document.addEventListener('DOMContentLoaded', () => {
     saveActiveTabToMemory();
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs && tabs[0]) {
-        chrome.tabs.sendMessage(tabs[0].id, { action: 'FILL_ALL', data: { pilgrims: pilgrims.filter(p => p.name) } }, (res) => {
+        const validPilgrims = pilgrims.filter(p => p.name);
+        const primary = validPilgrims[0] || pilgrims[0] || {};
+        chrome.tabs.sendMessage(tabs[0].id, {
+          action: 'FILL_ALL',
+          data: {
+            pilgrims: validPilgrims,
+            contact: {
+              email: primary.email || '',
+              city: primary.city || '',
+              state: primary.state || '',
+              pincode: primary.pincode || '',
+              country: primary.passportCountry || 'India',
+              mobile: primary.mobile || ''
+            }
+          }
+        }, (res) => {
           if (chrome.runtime.lastError) {
             showToast('Open TTD booking page first!');
           } else {

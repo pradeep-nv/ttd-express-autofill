@@ -1,154 +1,2881 @@
-(function(){const U=e=>{e.dispatchEvent(new Event("input",{bubbles:!0})),e.dispatchEvent(new Event("change",{bubbles:!0})),e.dispatchEvent(new Event("blur",{bubbles:!0}))},K=e=>e?e.toString().toLowerCase().trim().replace(/\s+/g," "):"",I=(e,s)=>{if(!e)return;const i=Object.getOwnPropertyDescriptor(e.constructor.prototype,"value");i&&i.set?i.set.call(e,s):e.value=s,U(e)},P=async(e,s)=>{if(!e||!s)return!1;if(e.value&&e.value.trim().toLowerCase()===s.trim().toLowerCase())return!0;const i=(b,T)=>{const x=Object.keys(b).find(d=>d.startsWith("__reactFiber$")||d.startsWith("__reactInternalInstance$")||d.startsWith("__reactProps$"));if(x&&x.startsWith("__reactProps$")){const d=b[x];if(d&&d.onChange){const g={target:{value:T},currentTarget:{value:T},preventDefault:()=>{},stopPropagation:()=>{},persist:()=>{},nativeEvent:new Event("change")};try{return d.onChange(g),!0}catch{}}}return!1};e.click(),await new Promise(b=>setTimeout(b,20)),e.focus(),e.dispatchEvent(new PointerEvent("pointerdown",{bubbles:!0,cancelable:!0,view:window,pointerId:1})),await new Promise(b=>setTimeout(b,10)),e.dispatchEvent(new PointerEvent("pointerup",{bubbles:!0,cancelable:!0,view:window,pointerId:1})),await new Promise(b=>setTimeout(b,10));const a=e.getBoundingClientRect(),y=a.left+a.width/2,f=a.top+a.height/2;e.dispatchEvent(new MouseEvent("mousedown",{bubbles:!0,cancelable:!0,view:window,clientX:y,clientY:f})),await new Promise(b=>setTimeout(b,10)),e.dispatchEvent(new MouseEvent("mouseup",{bubbles:!0,cancelable:!0,view:window,clientX:y,clientY:f})),await new Promise(b=>setTimeout(b,10)),e.dispatchEvent(new MouseEvent("click",{bubbles:!0,cancelable:!0,view:window,clientX:y,clientY:f}));for(let b=0;b<8;b++){await new Promise(x=>setTimeout(x,40));let T=Array.from(document.querySelectorAll('[class*="floatingDropdown_listItem"], [class*="dropdown_scroll"] li, .dropdown_scroll li, ul[style*="list-style-type: none"] li'));if(T.length>0){const x=g=>g.toLowerCase().replace(/[\u0027\u2018\u2019\u0060]/g,"'").replace(/[\u0022\u201C\u201D]/g,'"').replace(/\s+/g," ").trim(),d=T.find(g=>{const S=g.innerText?.trim();return S&&x(S)===x(s)});if(d){const g=d.innerText?.trim();d.focus?.(),d.scrollIntoView?.({block:"nearest"}),d.dispatchEvent(new PointerEvent("pointerdown",{bubbles:!0,cancelable:!0,view:window})),d.dispatchEvent(new MouseEvent("mousedown",{bubbles:!0,cancelable:!0,view:window})),await new Promise(p=>setTimeout(p,10)),d.dispatchEvent(new PointerEvent("pointerup",{bubbles:!0,cancelable:!0,view:window})),d.dispatchEvent(new MouseEvent("mouseup",{bubbles:!0,cancelable:!0,view:window})),await new Promise(p=>setTimeout(p,20)),d.click();const S=new MouseEvent("click",{bubbles:!0,cancelable:!0,view:window,detail:1});if(d.dispatchEvent(S),d.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",code:"Enter",keyCode:13,bubbles:!0})),d.dispatchEvent(new KeyboardEvent("keyup",{key:"Enter",code:"Enter",keyCode:13,bubbles:!0})),await new Promise(p=>setTimeout(p,30)),!e.value||e.value.trim()===""){i(e,g);const p=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"value")?.set;p&&(p.call(e,g),e.dispatchEvent(new Event("input",{bubbles:!0})),e.dispatchEvent(new Event("change",{bubbles:!0}))),await new Promise(C=>setTimeout(C,20))}e.dispatchEvent(new Event("input",{bubbles:!0,cancelable:!0})),e.dispatchEvent(new Event("change",{bubbles:!0,cancelable:!0}));const E=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"value")?.set;if(E&&e.value){const p=e.value;E.call(e,""),e.dispatchEvent(new Event("input",{bubbles:!0})),await new Promise(C=>setTimeout(C,20)),E.call(e,p),e.dispatchEvent(new Event("input",{bubbles:!0}))}await new Promise(p=>setTimeout(p,50)),e.dispatchEvent(new FocusEvent("blur",{bubbles:!0,relatedTarget:document.body})),document.body.click(),await new Promise(p=>setTimeout(p,80)),e.value&&e.value.trim()}}}return!1},v=(e,s)=>{let i=document.querySelector(`input[name="${e}"]`);if(i)return i;if(s){const a=document.querySelectorAll("label, span, div");for(const y of a){const f=y.textContent?.trim().toLowerCase();if(f&&f.includes(s.toLowerCase())){const b=y.closest("div");if(b&&(i=b.querySelector("input"),i))return i}}}return null},W=(...e)=>{for(const s of e){const i=document.querySelector(`input[name="${s}"]`);if(i)return i}return null},F=(...e)=>{for(const s of e){const i=document.querySelectorAll(`input[name="${s}"]`);if(i.length>0)return Array.from(i)}return[]},Y=async e=>{if(e){if(e.email){const s=F("pilgrimEmail","emailId","email"),i=s[s.length-1];if(i){const a=Object.getOwnPropertyDescriptor(i.constructor.prototype,"value");a&&a.set?a.set.call(i,e.email):i.value=e.email,i.dispatchEvent(new Event("input",{bubbles:!0})),i.dispatchEvent(new Event("change",{bubbles:!0}))}}if(e.city){const s=F("pilgrimCity","city"),i=s[s.length-1];i&&I(i,e.city)}if(e.state){const s=F("pilgrimState","state"),i=s[s.length-1];i&&I(i,e.state)}if(e.country){const s=F("pilgrimCountry","country");if(s.length>0){const i=s[s.length-1];i&&I(i,e.country)}}if(e.pincode){const s=W("pilgrimPincode","pincode");s&&I(s,e.pincode)}if(e.gothram){const s=W("gothram","gotram");s&&I(s,e.gothram)}}},D=(e,...s)=>{for(const i of s){const a=document.querySelectorAll(`input[name="${i}"]`);if(a.length>e)return a[e]}return null},G=async(e,s,i)=>{const a=(d,g)=>document.querySelectorAll(`input[name="${d}"]`)[g],y=D(s,"name","fname");y&&I(y,e.name),await new Promise(d=>setTimeout(d,100));const f=a("age",s);f&&I(f,e.age),await new Promise(d=>setTimeout(d,100));const b=a("gender",s);b&&await P(b,e.gender),await new Promise(d=>setTimeout(d,80));const T=D(s,"idType","photoIdType");if(T){const d=(e.idProof||"Aadhaar Card").trim();await P(T,d),await new Promise(g=>setTimeout(g,300))}const x=D(s,"idNumber","idProofNumber");if(x&&(x.disabled&&(x.disabled=!1),I(x,e.idNumber)),await new Promise(d=>setTimeout(d,80)),e.idProof==="Passport"){let d=null;for(let g=0;g<20&&(d=document.querySelector('[class*="passportVisaPopup"]')||document.querySelector('[class*="popup"]')||document.querySelector('[class*="modal"]'),!d);g++)await new Promise(S=>setTimeout(S,200));if(d){const g=p=>d.querySelector(`input[name="${p}"]`);if(e.idNumber){const p=g("passportNumber");p&&I(p,e.idNumber)}await new Promise(p=>setTimeout(p,300));const S=e.passportCountry||i;if(S){const p=g("country");p&&I(p,S)}if(e.visaNumber){const p=g("visaNumber");p&&I(p,e.visaNumber)}if(e.visaType){const p=g("visaType");p&&I(p,e.visaType)}if(e.visaValidityDate){const p=g("visaValidityDate");p&&I(p,e.visaValidityDate)}await new Promise(p=>setTimeout(p,600));const E=d.querySelector('button[type="submit"]')||d.querySelector('button[class*="continueBtn"]')||Array.from(d.querySelectorAll("button")).find(p=>p.innerText?.toLowerCase().includes("submit"));E&&(E.disabled||(E.click(),await new Promise(p=>setTimeout(p,1e3))))}}},M=e=>(e||"").toString().toLowerCase().trim().replace(/\s+/g," ");const R=(e,s,i={})=>{if(!e)return;const{blur:a=!1}=i,y=Object.getOwnPropertyDescriptor(e.constructor.prototype,"value");y&&y.set?y.set.call(e,s):e.value=s,e.dispatchEvent(new Event("input",{bubbles:!0})),e.dispatchEvent(new Event("change",{bubbles:!0})),a&&e.dispatchEvent(new Event("blur",{bubbles:!0}))},j=(e,s)=>{if(!e||!s)return!1;const i=M(s),a=Array.from(e.options),y=a.find(f=>M(f.textContent)===i)||a.find(f=>M(f.textContent).includes(i));return y?(R(e,y.value),!0):!1},H=async(e,s)=>{if(!e||!e.name||!e.name.trim())return;const i=document.querySelector(`input[name="fName${s}"]`);i&&R(i,e.name);const a=document.querySelector(`input[name="age${s}"]`);a&&e.age&&(R(a,e.age),await new Promise(T=>setTimeout(T,400)));const y=document.querySelector(`select[name="gender${s}"]`);y&&e.gender&&j(y,e.gender);const f=document.querySelector(`select[name="proofS${s}"]`);if(f&&e.idProof){for(let x=0;x<20&&f.options.length<=1;x++)await new Promise(d=>setTimeout(d,150));const T=e.idProof==="Passport"?"passport":"aadha";j(f,T),await new Promise(x=>setTimeout(x,250))}const b=document.querySelector(`input[name="proofId${s}"]`);b&&e.idNumber&&R(b,e.idNumber)};const J=e=>{if(!e||e.closest(".ng-hide, [hidden]"))return!1;const s=window.getComputedStyle(e),i=e.getBoundingClientRect();return s.display!=="none"&&s.visibility!=="hidden"&&i.width>0&&i.height>0};let Q=0;const z=()=>{const e=document.querySelector("#pasok");if(!e||!J(e))return!1;const s=Date.now();return s-Q<1e3?!1:(Q=s,e.click(),!0)},X=()=>{z();let e=null,s=!1;const i=()=>{s||(s=!0,setTimeout(()=>{s=!1,z()},150))};try{e=new MutationObserver(i),e.observe(document.body,{childList:!0,subtree:!0})}catch{}return()=>{e&&e.disconnect()}};const Z=async(e,s)=>{let i=Array.from(document.querySelectorAll('input[name="name"]'));if(i.length===0&&(i=Array.from(document.querySelectorAll('input[name="fname"]'))),i.length===0)return{status:"error",message:"Name inputs not found"};const a=[];for(let f=0;f<i.length;f++)(!i[f].value||i[f].value.trim()==="")&&a.push(f);const y=Math.min(a.length,e.length);for(let f=0;f<y;f++)await G(e[f],a[f],s?s.country:void 0),await new Promise(b=>setTimeout(b,150));return s&&await Y(s),{status:"success",filled:y}};function V(){return new Promise(e=>{let s=!1;const i=a=>{s||(s=!0,e(!!(a&&a.ok===!0)))};try{const a=chrome.runtime.sendMessage({type:"TTDAF_AUTHORIZE_FILL"},i);a&&typeof a.then=="function"&&a.then(i).catch(()=>i(null))}catch{i(null)}})}chrome.runtime.onMessage.addListener((e,s,i)=>{if(e.action==="AUTOFILL"){const{pilgrim:a,contact:y}=e.data;return(async()=>{try{if(!await V()){i({status:"error",message:"Pilgrim autofill requires a pass."});return}let f=Array.from(document.querySelectorAll('input[name="name"]'));if(f.length===0&&(f=Array.from(document.querySelectorAll('input[name="fname"]'))),f.length===0){i({status:"error",message:"Name inputs not found"});return}let b=-1;for(let T=0;T<f.length;T++)if(!f[T].value||f[T].value.trim()===""){b=T;break}b===-1&&f.length>0&&(b=f.length-1),b!==-1&&await G(a,b,y.country),await Y(y),i({status:"success"})}catch(f){i({status:"error",message:f.message||f.toString()})}})(),!0}else if(e.action==="FILL_SEVA"){const{sevakData:a}=e.data;return(async()=>{try{await $(a,a.memberIndex),i({status:"success"})}catch(y){i({status:"error",message:y.message||y.toString()})}})(),!0}else if(e.action==="FILL_ALL"){const{pilgrims:a,contact:y}=e.data;return(async()=>{try{if(!await V()){i({status:"error",message:"Pilgrim autofill requires a pass."});return}const f=await Z(a,y);i(f)}catch(f){i({status:"error",message:f.toString()})}})(),!0}else if(e.action==="FILL_CONTACT"){const{contact:a}=e.data;return(async()=>{try{if(!await V()){i({status:"error",message:"Pilgrim autofill requires a pass."});return}await Y(a),i({status:"success"})}catch(y){i({status:"error",message:y.toString()})}})(),!0}else if(e.action==="FILL_SRIVANI"){const{members:a,darshanDate:y,extraLaddus:f,includeAccommodation:b,accommodationDate:T,accommodationTimeSlot:x}=e.data;return(async()=>{const d=X();try{const g=document.querySelector('input[name="fName0"]'),S=g&&g.closest("form"),E=!!S&&S.classList.contains("ng-hide"),C=!!g&&!E&&!(g.value||"").trim()?0:1,q=a.slice(0,9);for(let k=0;k<q.length;k++)await H(q[k],C+k),await new Promise(O=>setTimeout(O,150));await new Promise(k=>setTimeout(k,400)),z(),i({status:"success"})}catch(g){i({status:"error",message:g.toString()})}finally{d()}})(),!0}});const $=async e=>{let s=document;if(typeof e.memberIndex=="number"){const t=document.querySelectorAll('.profile_sevakContainer__APYsI, [class*="sevakContainer"]');t.length>e.memberIndex?s=t[e.memberIndex]:t.length>0&&(s=t[t.length-1])}const i=t=>{const n=Array.from(s.querySelectorAll(t));if(n.length===0)return null;let o=n.slice().reverse().find(c=>{const r=c.getBoundingClientRect(),l=c.offsetParent!==null&&r.width>0&&r.height>0,u=!c.value||c.value.trim()==="";return l&&u});return o||(o=n.slice().reverse().find(c=>{const r=c.getBoundingClientRect();return c.offsetParent!==null&&r.width>0&&r.height>0})),o||n[n.length-1]},a=(t,n)=>{if(!n)return!1;const o=i(`input[name="${t}"]`);return o?(I(o,n),!0):!1},y=async(t,n=1e3)=>{const o=Date.now();for(;Date.now()-o<n;){const c=i(t);if(c&&c.value&&c.value.trim().length>0)return c.value;await new Promise(r=>setTimeout(r,100))}return null},f=(t,n)=>{if(!n)return;s.querySelectorAll(`input[name="${t}"]`).forEach(c=>{c.value.toLowerCase()===n.toLowerCase()&&(c.checked=!0,c.click(),U(c))})},b=async(t,n)=>{if(!n)return;const o=i(`input[name="${t}"]`)||i(`input#${t}`);o&&I(o,n)};await y('#idType, input[name="idType"], input[name="photoIdType"], input[name="spvrIdType"]',400);const T=(e.idType||"Aadhaar Card").trim(),x=i("#idType")||i('input[name="idType"]')||i('input[name="photoIdType"]')||i('input[name="spvrIdType"]'),d=async(t,n,o=2)=>{for(let c=1;c<=o;c++){if(await P(t,n),await new Promise(u=>setTimeout(u,80)),t.value&&t.value.trim()!=="")return!0;const r=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"value")?.set;r&&(r.call(t,n),t.dispatchEvent(new Event("input",{bubbles:!0})),t.dispatchEvent(new Event("change",{bubbles:!0}))),await new Promise(u=>setTimeout(u,50));const l=Object.keys(t).find(u=>u.startsWith("__reactProps$"));if(l){const u=t[l];if(u&&u.onChange)try{u.onChange({target:{value:n},currentTarget:{value:n},preventDefault:()=>{},stopPropagation:()=>{},persist:()=>{},nativeEvent:new Event("change")})}catch{}}if(await new Promise(u=>setTimeout(u,150)),t.value&&t.value.trim()!=="")return!0;t.dispatchEvent(new FocusEvent("blur",{bubbles:!0})),document.body.click(),await new Promise(u=>setTimeout(u,100))}return!1},g=T.toLowerCase().includes("aadhaar");if(x&&!g&&await d(x,T),await new Promise(t=>setTimeout(t,150)),a("idNumber",e.idNumber),a("spvrName",e.spvrName)||a("trainerName",e.spvrName),a("spvrRelativeName",e.spvrRelativeName)||a("trainerRelativeName",e.spvrRelativeName),await b("dob",e.dob),await new Promise(t=>setTimeout(t,100)),a("age",e.age),f("gender",e.gender?.toLowerCase()),e.maritalStatus&&(await P(i('input[name="maritalStatus"]'),e.maritalStatus),await new Promise(t=>setTimeout(t,50))),a("mobileNo",e.mobileNo),a("altMobileNo",e.altMobileNo),a("emailId",e.email)||a("email",e.email),a("residentialAdrs",e.residentialAdrs),a("pincode",e.pincode),e.country&&(await P(i('input[name="country"]'),e.country),document.body.click(),await new Promise(t=>setTimeout(t,50))),e.state){const t=i('input[name="state"]');t&&(t.readOnly?(await P(t,e.state),document.body.click(),t.dispatchEvent(new FocusEvent("blur",{bubbles:!0})),await new Promise(n=>setTimeout(n,200))):(I(t,e.state),await new Promise(n=>setTimeout(n,50))))}if(e.district){const t=i('input[name="district"]');if(t&&!t.readOnly)I(t,e.district),await new Promise(n=>setTimeout(n,50));else if(t){document.body.click(),await new Promise(o=>setTimeout(o,100));let n=!1;for(let o=0;o<4&&!n;o++){o>0&&await new Promise(m=>setTimeout(m,150));const c=t.closest('div[style*="position"]')||t.parentElement?.parentElement||t.parentElement;t.click(),t.focus(),t.dispatchEvent(new PointerEvent("pointerdown",{bubbles:!0,cancelable:!0,view:window})),await new Promise(m=>setTimeout(m,50)),t.dispatchEvent(new PointerEvent("pointerup",{bubbles:!0,cancelable:!0,view:window})),await new Promise(m=>setTimeout(m,100));let r=!1,l=[];for(let m=0;m<10;m++){if(l=Array.from((c||document).querySelectorAll('[class*="floatingDropdown_listItem"], [class*="dropdown_scroll"] li, ul[style*="list-style-type: none"] li')),l.length===0&&c){const A=c.parentElement;A&&(l=Array.from(A.querySelectorAll('[class*="floatingDropdown_listItem"], [class*="dropdown_scroll"] li, ul[style*="list-style-type: none"] li')))}if(l.length>0){r=!0;break}await new Promise(A=>setTimeout(A,100))}if(!r){document.body.click(),await new Promise(m=>setTimeout(m,100));continue}const u=m=>m.toLowerCase().replace(/\s+/g," ").trim(),h=u(e.district);let w=l.find(m=>{const A=m.innerText?.trim();return A&&u(A)===h});if(w||(w=l.find(m=>{const A=u(m.innerText?.trim()||"");return A.startsWith(h)||h.startsWith(A)})),!w){const m=B=>B.replace(/\s*(urban|rural|north|south|east|west)$/i,"").trim(),A=u(m(e.district));w=l.find(B=>{const _=u(m(B.innerText?.trim()||""));return _.includes(A)||A.includes(_)})}w&&(w.scrollIntoView?.({block:"nearest"}),w.click(),await new Promise(m=>setTimeout(m,100)),n=t.value&&t.value.trim().length>0),document.body.click(),await new Promise(m=>setTimeout(m,50))}await new Promise(o=>setTimeout(o,50))}}if(a("city",e.city)||a("cityOrVillage",e.city),e.qualification){const t=v("qualification","Qualification Category")||v("qualificationCategory","Qualification");t&&await P(t,e.qualification)&&await new Promise(o=>setTimeout(o,600))}if(e.specQualification){const t=v("specQualification","Specific Qualification")||v("specificQualification","Qualification");t&&(await P(t,e.specQualification),await new Promise(n=>setTimeout(n,150)))}if(a("uniName",e.uniName),e.yearOfGraduation){const t=v("yearOfGraduation","Year of Graduation")||v("graduationYear","Year");t&&(await P(t,e.yearOfGraduation),await new Promise(n=>setTimeout(n,100)))}if(a("eduSpecialization",e.eduSpecialization),e.employmentStatus){const t=v("employmentStatus","Employment Status")||v("employmentStatus","Occupation Status");t&&(await P(t,e.employmentStatus),await new Promise(n=>setTimeout(n,150)))}if(e.employmentSector){const t=v("employmentSector","Employment Sector")||v("sector","Sector");t&&(await P(t,e.employmentSector),await new Promise(n=>setTimeout(n,100)))}if(e.professionalCategory){const t=v("professionalCategory","Profession")||v("profession","Professional Category");t&&await P(t,e.professionalCategory)&&await new Promise(o=>setTimeout(o,300))}if(e.specProfession){const t=v("specProfession","Profession Role")||v("professionRole","Role");t&&(await P(t,e.specProfession),await new Promise(n=>setTimeout(n,100)))}if(a("profYearsOfExp",e.profYearsOfExp),f("previouslyVolunteered",e.previouslyVolunteered),e.previouslyVolunteered==="true"&&(await new Promise(t=>setTimeout(t,150)),a("noOfParticipation",e.noOfParticipation),a("lastTwoSevaPeriods",e.lastTwoSevaPeriods),a("religiousInstitute",e.religiousInstitute),a("volunteeredExp",e.volunteeredExp)),e.experiencedTrainer!==void 0&&(f("experiencedTrainer",e.experiencedTrainer),e.experiencedTrainer==="true")){await new Promise(r=>setTimeout(r,150));const t=v("trainerInstituteName","Organization / Institute Name");t&&I(t,e.trainerInstituteName);const n=v("trainerRole","Your Role as Trainer");n&&I(n,e.trainerRole);const o=v("trainerExp","Experience");if(o&&I(o,e.trainerExp),e.areaOfTrainerExp&&e.areaOfTrainerExp.length>0){const r=document.querySelector('input[name="areaOfTrainerExp"]');if(r){r.click(),await new Promise(u=>setTimeout(u,150));const l=document.querySelectorAll('.floatingDropdown_checkboxListItem__AJXt6, [class*="checkboxListItem"]');for(const u of l){const h=u.textContent?.trim();if(e.areaOfTrainerExp.some(w=>{const m=K(w),A=K(h);return m===A||m.includes("other")&&A.includes("other")&&A.includes("specify")})){const w=u.querySelector('input[type="checkbox"]');w&&!w.checked&&(w.click(),await new Promise(m=>setTimeout(m,100)))}}document.body.click(),await new Promise(u=>setTimeout(u,100))}}if(e.areaOfTrainerExp?.some(r=>r.toLowerCase().includes("other")&&r.toLowerCase().includes("specify"))&&e.otherAreaOfTrainerExp){await new Promise(l=>setTimeout(l,150));const r=v("otherAreaOfTrainerExp","Other Area of Training Expertise");r&&I(r,e.otherAreaOfTrainerExp)}}if(e.preferredLoc&&(await P(document.querySelector('input[name="preferredLoc"]'),e.preferredLoc),await new Promise(t=>setTimeout(t,150))),e.timeCommitment&&(await P(document.querySelector('input[name="timeCommitment"]'),e.timeCommitment),await new Promise(t=>setTimeout(t,150))),e.freq&&(await P(document.querySelector('input[name="freq"]'),e.freq),await new Promise(t=>setTimeout(t,150))),e.preferredLoc==="Other(Specify)"&&e.otherPreferredLoc&&(await new Promise(t=>setTimeout(t,150)),a("otherPreferredLoc",e.otherPreferredLoc)),a("firstRefName",e.firstRefName),a("firstRefDetails",e.firstRefDetails),a("firstRefMobileNo",e.firstRefMobileNo),a("secRefName",e.secRefName),a("secRefDetails",e.secRefDetails),a("secRefMobileNo",e.secRefMobileNo),e.languages&&Array.isArray(e.languages)&&e.languages.length>0){const t=document.querySelector('input[name="languages"]');if(t){t.click(),t.focus(),await new Promise(n=>setTimeout(n,200));for(const n of e.languages){const o=document.querySelectorAll(".floatingDropdown_checkboxListItem__AJXt6, li");for(const c of o)if(c.textContent?.trim()===n){const r=c.querySelector('input[type="checkbox"]');r&&!r.checked&&(r.click(),await new Promise(l=>setTimeout(l,100)));break}}document.body.click(),await new Promise(n=>setTimeout(n,100))}}const S=(t,n,o)=>{const c=atob(t.split(",")[1]),r=new ArrayBuffer(c.length),l=new Uint8Array(r);for(let u=0;u<c.length;u++)l[u]=c.charCodeAt(u);return new File([r],n,{type:o})},E=async(t,n)=>{if(!t||!n||!n.data)return!1;try{const o=S(n.data,n.name,n.type),c=new DataTransfer;c.items.add(o);const r=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"files")?.set;r?r.call(t,c.files):t.files=c.files;const l=Object.keys(t).find(u=>u.startsWith("__reactProps$"));if(l&&t[l]?.onChange)try{t[l].onChange({target:{files:c.files,value:n.name,type:"file"},currentTarget:{files:c.files,value:n.name,type:"file"},preventDefault:()=>{},stopPropagation:()=>{},persist:()=>{},nativeEvent:new Event("change")})}catch{}return t.dispatchEvent(new Event("change",{bubbles:!0})),U(t),!0}catch{return!1}};if(e.photo&&e.photo.data){const t=Array.from(s.querySelectorAll('[class*="profile_photo-container"], [class*="photo-container"], [class*="photo-upload-container"]')),n=t.slice().reverse().find(o=>{const c=o.getBoundingClientRect();return o.offsetParent!==null&&c.width>0&&c.height>0})||t[t.length-1];if(n){const o=n.parentElement?.querySelector('input[type="file"]')||n.nextElementSibling;if(o&&o.type==="file")await E(o,e.photo);else{const c=Array.from(s.querySelectorAll('input[type="file"][accept*="jpeg"]')),r=c.slice().reverse().find(l=>{const u=l.getBoundingClientRect();return l.offsetParent!==null||u.width>0})||c[c.length-1];r&&await E(r,e.photo)}}await new Promise(o=>setTimeout(o,250))}if(e.document&&e.document.data){const t=document.querySelectorAll("label");let n=null;for(const o of t)if(o.textContent?.includes("Upload ID Proof")){n=(o.closest('div[style*="position: relative"]')||o.closest("div"))?.querySelector('input[type="file"]');break}if(n)await E(n,e.document);else{const o=document.querySelectorAll('input[type="file"][accept*="jpeg"]');o.length>1&&await E(o[1],e.document)}await new Promise(o=>setTimeout(o,250))}if(e.eduCertificate&&e.eduCertificate.data){const t=document.querySelectorAll("label");let n=null;for(const o of t)if(o.textContent?.includes("Upload Educational Certificate")){n=(o.closest('div[style*="position: relative"]')||o.closest("div"))?.querySelector('input[type="file"]');break}if(n)await E(n,e.eduCertificate);else{const o=document.querySelectorAll('input[type="file"][accept*="jpeg"]');o.length>2&&await E(o[2],e.eduCertificate)}await new Promise(o=>setTimeout(o,250))}const p=(t,n)=>{if(!n)return!1;const o=i(`input[name="${t}"]`);return o?(I(o,n),!0):!1};if(p("sevakName",e.sevakName),p("surName",e.surName),p("fatherOrSpouseName",e.fatherOrSpouseName),e.bloodGroup){const t=i('input[name="bloodGroup"]');t&&(await P(t,e.bloodGroup),await new Promise(n=>setTimeout(n,200)))}if(e.mentallyFit||e.physicallyFit){let t=s;(!t||!t.querySelectorAll)&&(t=document);const n=Array.from(t.querySelectorAll('#fitness, [id*="fitness"]'));let o;if(n.length>0?o=n.slice().reverse().find(c=>{const r=c.getBoundingClientRect();return c.offsetParent!==null&&r.width>0&&r.height>0})||n[n.length-1]:o=Array.from(t.querySelectorAll('.profile_radioGroup__RkVE_, div[class*="radioGroup"]')).find(r=>r.textContent.includes("Mentally Fit")),o){const c=Array.from(o.querySelectorAll('input[type="checkbox"][name="fitness"]'));for(const r of c){const l=r.closest("label")?.textContent?.toLowerCase()||"";let u=!1;if(e.mentallyFit&&l.includes("mentally")&&!r.checked&&(u=!0),e.physicallyFit&&l.includes("physically")&&!r.checked&&(u=!0),u){const h=Object.keys(r).find(m=>m.startsWith("__reactProps$"));let w=!1;if(h&&r[h]?.onChange)try{r[h].onChange({target:{checked:!0,type:"checkbox",name:"fitness"},currentTarget:{checked:!0,type:"checkbox",name:"fitness"},preventDefault:()=>{},stopPropagation:()=>{},persist:()=>{},nativeEvent:new Event("change")}),w=!0}catch{}(!w||!r.checked)&&r.click(),await new Promise(m=>setTimeout(m,150))}}}}if(p("street",e.street),p("doorNo",e.doorNo),e.nearestTtdTemple){const t=i('input[name="nearestTtdTemple"]');t&&(await P(t,e.nearestTtdTemple),await new Promise(n=>setTimeout(n,200)))}p("qualification",e.volunteerQualification),p("profession",e.volunteerProfession),p("employeeId",e.employeeId),p("designation",e.designation),p("specialisation",e.specialisation),p("placeOfWork",e.placeOfWork);const C=async(t,n)=>{if(!t)return!1;const o=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"value")?.set;o?o.call(t,n):t.value=n;const c=Object.keys(t).find(r=>r.startsWith("__reactProps$"));if(c){const r=t[c];if(r&&r.onChange)try{r.onChange({target:{value:n},currentTarget:{value:n},preventDefault:()=>{},stopPropagation:()=>{},persist:()=>{},nativeEvent:new Event("change")})}catch{}}return t.dispatchEvent(new Event("input",{bubbles:!0})),t.dispatchEvent(new Event("change",{bubbles:!0})),t.dispatchEvent(new FocusEvent("blur",{bubbles:!0})),await new Promise(r=>setTimeout(r,50)),t.value===n};for(let t=1;t<=3&&e.professionalCategory;t++){const n=v("professionalCategory","Profession")||v("profession","Professional Category");if(n&&(!n.value||n.value.trim()==="")){if(await P(n,e.professionalCategory),await new Promise(o=>setTimeout(o,250)),(!n.value||n.value.trim()==="")&&await C(n,e.professionalCategory),await new Promise(o=>setTimeout(o,200)),e.specProfession){const o=v("specProfession","Profession Role")||v("professionRole","Role");o&&(!o.value||o.value.trim()==="")&&(await P(o,e.specProfession),await new Promise(c=>setTimeout(c,150)),(!o.value||o.value.trim()==="")&&await C(o,e.specProfession))}}else if(n&&n.value)if(e.specProfession){const o=v("specProfession","Profession Role")||v("professionRole","Role");if(o&&(!o.value||o.value.trim()===""))await P(o,e.specProfession),await new Promise(c=>setTimeout(c,150)),(!o.value||o.value.trim()==="")&&await C(o,e.specProfession);else break}else break;else break}const L=(e.idType||"Aadhaar Card").trim();if(!L.toLowerCase().includes("aadhaar"))for(let t=1;t<=3;t++){const n=i("#idType")||i('input[name="idType"]')||i('input[name="photoIdType"]')||i('input[name="spvrIdType"]');if(n&&(!n.value||n.value.trim()==="")){if(await P(n,L),await new Promise(o=>setTimeout(o,200)),(!n.value||n.value.trim()==="")&&await C(n,L),await new Promise(o=>setTimeout(o,100)),e.idNumber&&a("idNumber",e.idNumber),n.value&&n.value.trim()!=="")break}else break}if(e.idNumber){const t=i('input[name="idNumber"]');t&&(!t.value||t.value.trim()==="")&&a("idNumber",e.idNumber)}if(e.professionalCategory){const t=v("professionalCategory","Profession")||v("profession","Professional Category");t&&(await C(t,e.professionalCategory),await new Promise(n=>setTimeout(n,200)))}if(e.specProfession){const t=v("specProfession","Profession Role")||v("professionRole","Role");t&&(await C(t,e.specProfession),await new Promise(n=>setTimeout(n,100)))}const k=(e.idType||"Aadhaar Card").trim(),O=k.toLowerCase().includes("aadhaar"),N=i("#idType")||i('input[name="idType"]')||i('input[name="photoIdType"]')||i('input[name="spvrIdType"]');if(!O&&N&&(!N.value||N.value.trim()==="")){if(await C(N,k),N.closest(".MuiFormControl-root")||N.closest(".form-group")||N.parentElement?.parentElement){document.querySelector('[role="listbox"]')||document.querySelector(".MuiAutocomplete-listbox")||(N.focus(),N.click(),await new Promise(c=>setTimeout(c,100)));const o=document.querySelectorAll('[role="option"], li[data-option-index]');for(const c of o)if(c.textContent.toLowerCase().includes(k.toLowerCase())){c.click();break}}await new Promise(n=>setTimeout(n,100))}if(e.idNumber){const t=i('input[name="idNumber"]');t&&(!t.value||t.value.trim()==="")&&a("idNumber",e.idNumber)}if(e.clickSaveAndAdd!==!1){await new Promise(n=>setTimeout(n,400));const t=Array.from(document.querySelectorAll("button")).find(n=>n.textContent?.trim().includes("Save and Add Sevak")&&!n.disabled);if(t){t.click();for(let n=0;n<30;n++){await new Promise(c=>setTimeout(c,50));const o=document.querySelectorAll('[role="dialog"]');for(const c of o){const r=c.textContent||"";if(r.toLowerCase().includes("validation")||r.toLowerCase().includes("alert")){const l=c.querySelector('[class*="subTitle"]'),u=l?l.textContent.trim():"Backend validation failed",h=Array.from(c.querySelectorAll("button")).find(m=>m.textContent?.includes("Retry")),w=c.querySelector('img[src*="cross"]');throw h?h.click():w&&w.click(),new Error(`Validation Modal Error: ${u}`)}}}}}};(function(){const e="ttdaf-fill-button",s=e+"-style",i="ttdaf-fill-toast",a="ttdevasthanams.ap.gov.in";let y=!1,f=null;function b(){return new Promise(r=>{let l=!1;const u=h=>{l||(l=!0,f={status:h&&h.ok===!0?"active":"none"},r(f))};try{const h=chrome.runtime.sendMessage({type:"TTDAF_AUTHORIZE_FILL"},u);h&&typeof h.then=="function"&&h.then(u).catch(()=>u(null))}catch{u(null)}})}async function T(r=!1){return r&&(f=null),f||await b(),f.status==="active"}try{chrome.storage.onChanged.addListener((r,l)=>{l==="local"&&r.ttdafLicense&&(f=null,document.getElementById(e)&&n())})}catch{}function x(){return new Promise(r=>{const l="ttdafExtensionId",u=()=>{try{if(typeof crypto<"u"&&crypto.randomUUID)return crypto.randomUUID()}catch{}return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,w=>{const m=Math.random()*16|0;return(w==="x"?m:m&3|8).toString(16)})},h=w=>"https://ttd-info.vercel.app/pass?extension_id="+encodeURIComponent(w||"")+"&activate=1";try{if(chrome.runtime&&chrome.runtime.id){r(h(chrome.runtime.id));return}chrome.storage.local.get([l],w=>{let m=w&&w[l];if(!m){m=u();try{chrome.storage.local.set({[l]:m})}catch{}}r(h(m))})}catch{r("https://ttd-info.vercel.app/pass")}})}const d=()=>{const r=(location.hostname||"").toLowerCase();return r===a||r.endsWith("."+a)},g=/Mac|iPhone|iPad|iPod/.test(navigator.platform||"")||/mac/i.test(navigator.userAgentData&&navigator.userAgentData.platform||""),S=g?"⌥A":"Alt+A",E=g?"Option + A":"Alt + A",p="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAJp0lEQVR4nO2ae4xcVR3HP+fce+ex790uXcq2rNmF5WHbWKBisVTQaCAqJKBWEEQ0/qGJiTEaUWNiiBqDMfyDxEQxkQCihBhLCiRFI7XYgi2PWLYtpbvd7faxu7OPzszdmbmPc8w5d2Z324DZJbvRTPwlN3fnzp1zft/f4/v7/U5WbN26VVNHIqkzkdSZSOpMJHUmkjoTSZ2JpM5EUmciqTOR1Jm4S3l5919/ds5nIf+TPRZ2VKL6WZz3vTjv73OfaXVuV7bto/ctL6A59YRAa00UhLieA9JcNUVqir1HMSBUTBTGuF6intlrseK+FzBxHCOJkTpgcuQMfqGI0sriqG0tLDBh7DzvF10FK+Y9Zb6v2cCs7TiC5pZmWru6iMMI4aSRMjHgsgOaB6OZnZzgrf2vo1UaL92AEBJtFU7gzN/nwyhRqaqYnv/b4Ku9ZZSfHMrhpt6i76qNeE1tCDeLkCvkIYmifHaKY68fpmf9jbR3rwXhIlyzlDAaVbnGXOI8cPGCcNQLLhNqsQ03bTytFOODRxh67VX6r72aSAu8TMPyA4ojZcPszNtD9KzfRsuai4grFYTQCKVRSiGEm+TUHIgFRGA8YRSfEwPGhKpC2Ocqeapjuvovt/eJwUEuvOJyojBcCdqOKZ48inRbaO68gLg8i+M4NmTCMEamWnC8NEI6SOnau+PIJDfSaXIH3iCeLeK6ng1Rx7wjXBw3hfAaUNq8a5wsUX6ezu51hIGgMj1mUC4/IK0iShOnyTa1Jta0bBcjHAd/aBeTB5+lXI6QTqqaE+Z7AY4kKgWc2vUCSkd2LZtzJEArpZD80b8xM7gX4abnvCgdiZdtojI+Yr24AoASxkpl0onFtPFKipNH32THI48TVk4wM7iboFy2Vk44QiOdDP7ho0RvD+I2NqCVUU4jUx7+9FkqE/s5c2wfz/z6V/jTY0iTj2Z9pfCyjdW8XAkPaU1Qmp1/YFgvjOhct45USzePPfgHhOszPfwaiFRVKUPMKQovvoQTh8hM8tywWVgOKecGmMyN8vgvd9DZu4FMYyMqruWZTihQxQlZLDsgFLO+n9QEE+uGS7UmnW3lzvt/TmNrG/t27MSpDFOcySE9D+FI4tgn/OcB3M4OJAJlQkqmKIwdBz3B8488wZWbr+GWb3wXxzHeMeGcGEyrGH9qatE6LpEUJEFQsdaq1Q4pHOIoApHlI5+/m7GhYUoTg/i5EcBBu2lmj7yFM3YK7+KLENb6CmSa0tQQuUOvEvg+N2y/y+abqXOmpUqCWxDHCt8vLpYTlgbIgDAtibI9VpWSTc47js2n7svWs65vDfncGGfHDCCjGJR277G027C+H5w2cFxmDh5k+sQRgnyOvg2X0r6uz4aW8ZBhRXNhgClFGAaL1nGJhVXguM6CNqR2N6GnSDW0s2HzJiZHjzGbO2mXL8+cRu3ZRz6bpaOxkcmnnib3xz8xvaGfoDegK+XRv/ES3FRj1UBJ/2RNJpLWyRGmNCxsbJfLQ0C2IYt8l8IpnTQdPZchHJegWDB8SOEfr+CcGKUzlUY+8BuiBx/i0PBxLv3qdvyJPHhZVvf0VouxNC38/IbakIdDtrFhZQAZ3RtbWm19sFXGbGIv46HqOKE1cRjaggoRwdPPoUsViqcnyPhlDuaLtH7xVlat6aNSCQhihWfrmgEj5u4J42uk69HU3rFSpCBIt7bbDsB+sgrUGlBti+X44FFKZwt4zc34xw7y8u4X+UsY8kZ/N6fzRYbTHlff/kmIYjJNDahSgeLEGVuM56xmQy/xiJAubtsF581SywbIrOssaP8XbKI1XjrFkUPDVMyc5EpUyqXvJ9/k5ud/y8fvuZNT+Sku3n4zLWt6CIKQ1tYmKrMlho8OW4pPyMaaZsF+EpnKrExhNUrrKHiHviqZV0wOTc3EhEqSdQKa1q1l0+fuoL3rSqZ2vcI4gk3bb7V0XqmUWL0qS7EYMhtUQ+2ccaLmeQVmz0XKkj1kuusaIANC2b+TTtso2tq1ltGRaVK6QCGXQ4cK4jJH9r5C0/WbWWUIQAnKM+O0r25haGiSC9b2nesBbeDUukFQJX+lAGniSmneQ1rZ+cgqYKMk4P3XbWPo2Djjo8fxTxxAeB0UTo0yOnaKjV8w3slQLikyepTDh4cYP+PT+4HNoCrId2AyrRRBMb8yE6sZs8uzRdKmOuj5WQaRzEFxpUjPhqu5Yst17Hzq79wUxLRcfAmTB0fpWN1Oz5YPE5UrFI7s4MTAy+z83Qvc9KV7aVjVTVwpJ4B0nIR2tY3TKqZUyGN4cNkBmV3K5Qpt1pDJZKkNGKtE0gvpIOQz3/oBT5R+yJ9//xLlzMO0nO5m9dbNtq/b/+j3Gdj/KocGxtnyqZvYevvd6NB4J/F4MiaYNY2hpP3sFwuLbk6XBMh4JQwMKSTgaiNE0kuKarMak8q0cM/9v+DA8zuYHB9kYmSIK+64jZeeephdT75AZ+8lbP/2vVz1iVtsk2rCyuaMNYxpreIEEBJUQFgqL7qXW9ohifSIwoiglK/O0wkZWOva+NAgXXQcY7Lrmk9vR4cBeyYeomtDP7S4fPmnm+m5cj2ysQ0VhFbxBEyUDHZmYLQhl/BcVJy2faCpccsOKJ1tsnXIzx2n830b7ThhxgF7GGWsa8hWmabSsWxj8kJFERvvup10czs9m7bYcNJBRFQu41RD1/7WHpIka1gwQtvfFieOEylJyuy97Cznpmi4sI+TA/sp5ccQjoeOI3N6AmYsiEN0XEFHBkjZIMJ1NC2ru1BRQOjnCf2C/U6oABWX7btElaTWmN9Hob0jPWanRxh+8w2a110GjrcCgOKA3g/dSP5siX899yiVYg6ZzoAZmU3vZnq56umVsbC0nXNslZZC4UrTOZvnJsyqoWZranLuYDwrXM+u6U+NcGDHoxRnFf1bP2b3XpTNl4JHxRFeQwPX3/s1nn3wAU4f/zGXb9lGR3cvqUyGODYKVmt8NYnnu+TaYaNpamsrJvXLEIrpesz0VJ4tcObtAQb27rEGuuU738PJZFFBZfkB2fkkqNDc1c2t9/2IfU8/yd6dz6CjyAKwgIySJqmN1W1iJzW/OuDUzoLmRuw5qNZJIjn7S3lc+sFruPa2z5JuarN7LnZ8WPphvRDWWpnWVm74ytfZUjiLPz1JWAmqBxqmNs3BSMREXnUkqFV8q59lfo1YcNCfymZoal+F19hsmU+FwaLBvDdAVU8pS6Uh6eYm0s2tS13hXbrnGsoIHZTnptYlrfz/f435HxdJnYmkzkRSZyKpM5HUmUjqTOR/W4Hlln8DzQmfiwnTObgAAAAASUVORK5CYII=";function C(){return document.querySelector('input[name="name"], input[name="fname"]')!==null}function L(r,l){const u=document.getElementById(i);u&&u.remove();const h=l==="error"?"#DC2626":l==="warn"?"#D97706":"#16A34A",w=document.createElement("div");w.id=i,w.textContent=r,w.style.cssText="position:fixed;bottom:96px;right:22px;z-index:2147483647;background:"+h+";color:#fff;font:600 13px/1.4 system-ui,-apple-system,sans-serif;padding:11px 16px;border-radius:12px;max-width:300px;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:ttdaf-toast-in .25s ease-out;",document.body.appendChild(w),setTimeout(()=>{const m=document.getElementById(i);m===w&&m.remove()},4e3)}async function q(){if(y)return;if(!await T(!0)){const l=await x();try{window.open(l,"_blank","noopener")}catch{}return}if(!C()){L("Open a TTD pilgrim booking form first.","warn");return}y=!0;const r=document.getElementById(e);r&&r.classList.add("ttdaf-busy");try{const l=await chrome.storage.local.get(["pilgrims","contact"]),u=l.pilgrims||[],h=l.contact||{};if(!u.length){L("No pilgrims saved — open the extension to add them.","warn");return}const w=await Z(u,h);w.status==="success"?L("⚡ Filled "+w.filled+" pilgrim"+(w.filled===1?"":"s")+".","success"):L(w.message||"Could not fill this page.","error")}catch(l){/extension context invalidated/i.test(l&&l.message||"")||!chrome.runtime?.id?(t(),L("Extension was reloaded — refresh this TTD page to use autofill.","warn")):L(l.message||"Fill failed — try reloading the TTD page.","error")}finally{y=!1;const l=document.getElementById(e);l&&l.classList.remove("ttdaf-busy")}}async function k(r,l,u){r.classList.toggle("ttdaf-locked",!1),r.setAttribute("aria-label","Fill pilgrim details. Shortcut: "+E),r.innerHTML='<span class="ttdaf-icon" aria-hidden="true"><img src="'+p+'" alt="" width="60" height="60"></span>'+('<span class="ttdaf-kbd" aria-hidden="true">'+S+"</span>");const h=l.querySelector(".ttdaf-pop");h&&(h.classList.remove("ttdaf-pop-hidden"),h.setAttribute("aria-label","Fill pilgrim details"),h.innerHTML='<div class="ttdaf-pop-title">Fill Pilgrim Details</div><div class="ttdaf-pop-kbd-row"><span>Shortcut</span><kbd>'+(g?"⌥":"Alt")+"</kbd><kbd>A</kbd></div>")}async function O(r){if(document.getElementById(e))return;if(!document.getElementById(s)){const w=document.createElement("style");w.id=s,w.textContent=`
-                #ttdaf-fab-wrap {
-                    position: fixed;
-                    right: 22px;
-                    bottom: 22px;
-                    z-index: 2147483646;
-                    font-family: system-ui, -apple-system, sans-serif;
+// TTD Form Helper — content script.
+// Fills the pilgrim / seva / srivani booking forms on the official TTD sites.
+// Free for every user — no license, pass, or payment gate on any action.
+(function () {
+  // Chrome/Edge expose `chrome`; Firefox and Safari expose `browser`.
+  const chrome = globalThis.chrome ?? globalThis.browser;
+
+  // A real "tab out" of a field, done at full speed.
+  //
+  // React 17+ does not listen for the `blur` event at all — it wires onBlur to
+  // the native, bubbling `focusout`. So `new Event("blur", {bubbles:true})`,
+  // which is what this used to dispatch, never reached the page's validator:
+  // a field could hold the right value while the site still showed "this field
+  // is required" and kept its Continue button disabled, because as far as the
+  // form library was concerned the field had never been visited or re-checked.
+  // Driving focus() → blur() makes the browser emit the genuine
+  // focus/focusin/blur/focusout sequence instead, which is what actually
+  // clears that error. Comboboxes are skipped (focusing one re-opens its
+  // floating list); they get the event pair directly, and selectFromDropdown
+  // does its own blur/outside-click at the end.
+  const tabOut = (el) => {
+    try {
+      if (!looksLikeCombobox(el) && typeof el.focus === "function") {
+        el.focus({ preventScroll: true });
+        if (document.activeElement === el) {
+          el.blur(); // real blur + focusout, straight from the browser
+          return;
+        }
+      }
+    } catch {}
+    // Not focusable (or a combobox): synthesize both, `focusout` being the one
+    // React and most form libraries actually subscribe to.
+    try {
+      el.dispatchEvent(new FocusEvent("blur", { bubbles: false }));
+      el.dispatchEvent(new FocusEvent("focusout", { bubbles: true }));
+    } catch {}
+  };
+
+  const dispatchAll = (el) => {
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+    tabOut(el);
+  };
+  const norm = (s) => (s ? s.toString().toLowerCase().trim().replace(/\s+/g, " ") : "");
+
+  // ---- On-page visual feedback (pure DOM, respects reduced-motion) ----
+  const prefersReducedMotion = () => {
+    try {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch {
+      return false;
+    }
+  };
+  const FEEDBACK_STYLE_ID = "ttdfh-feedback-style";
+  const ensureFeedbackStyles = () => {
+    if (document.getElementById(FEEDBACK_STYLE_ID)) return;
+    const style = document.createElement("style");
+    style.id = FEEDBACK_STYLE_ID;
+    style.textContent = `
+      @keyframes ttdfh-flash-ok { 0% { box-shadow: 0 0 0 3px rgba(30,158,92,.6); } 100% { box-shadow: 0 0 0 3px rgba(30,158,92,0); } }
+      @keyframes ttdfh-flash-warn { 0% { box-shadow: 0 0 0 3px rgba(217,119,6,.65); } 100% { box-shadow: 0 0 0 3px rgba(217,119,6,0); } }
+      .ttdfh-mark-ok { animation: ttdfh-flash-ok 1.1s ease-out; border-radius: 6px; }
+      .ttdfh-mark-warn { animation: ttdfh-flash-warn 1.6s ease-out; border-radius: 6px; }
+      .ttdfh-sr-only { position: fixed !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    `;
+    (document.head || document.documentElement).appendChild(style);
+  };
+  const isOnScreen = (el) => {
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
+  };
+  const flashField = (el, ok) => {
+    // Visual green flash hidden for now - uncomment below to re-enable in future:
+    /*
+    if (!el || prefersReducedMotion() || !isOnScreen(el)) return;
+    ensureFeedbackStyles();
+    const cls = ok ? "ttdfh-mark-ok" : "ttdfh-mark-warn";
+    el.classList.remove("ttdfh-mark-ok", "ttdfh-mark-warn");
+    void el.offsetWidth;
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), 1800);
+    */
+    return;
+  };
+  let liveRegion = null;
+  const announce = (msg) => {
+    try {
+      ensureFeedbackStyles();
+      if (!liveRegion || !liveRegion.isConnected) {
+        liveRegion = document.createElement("div");
+        liveRegion.className = "ttdfh-sr-only";
+        liveRegion.setAttribute("role", "status");
+        liveRegion.setAttribute("aria-live", "polite");
+        liveRegion.setAttribute("aria-atomic", "true");
+        document.body.appendChild(liveRegion);
+      }
+      liveRegion.textContent = "";
+      setTimeout(() => {
+        if (liveRegion) liveRegion.textContent = msg;
+      }, 30);
+    } catch {}
+  };
+  // A single on-page toast helper shared by the fillers and the floating button.
+  const PAGE_TOAST_ID = "ttdfh-fill-toast";
+  const toast = (message, kind) => {
+    try {
+      const existing = document.getElementById(PAGE_TOAST_ID);
+      if (existing) existing.remove();
+      const color = kind === "error" ? "#DC2626" : kind === "warn" ? "#D97706" : "#1E9E5C";
+      const node = document.createElement("div");
+      node.id = PAGE_TOAST_ID;
+      node.setAttribute("role", "status");
+      node.textContent = message;
+      node.style.cssText =
+        "position:fixed;bottom:96px;right:22px;z-index:2147483647;background:" +
+        color +
+        ";color:#fff;font:600 13px/1.4 system-ui,-apple-system,sans-serif;padding:11px 16px;border-radius:12px;max-width:320px;box-shadow:0 10px 30px rgba(0,0,0,.3);";
+      document.body.appendChild(node);
+      announce(message);
+      setTimeout(() => {
+        if (document.getElementById(PAGE_TOAST_ID) === node) node.remove();
+      }, 4500);
+    } catch {}
+  };
+
+  // ---- Self-QC: track every field a fill touches, then mark filled (green) vs
+  // blank/failed (red) once the run finishes, with a small on-page summary. ----
+  const QC_STYLE_ID = "ttdfh-qc-style";
+  const ensureQCStyles = () => {
+    if (document.getElementById(QC_STYLE_ID)) return;
+    const style = document.createElement("style");
+    style.id = QC_STYLE_ID;
+    style.textContent = `
+      .ttdfh-qc-ok { box-shadow: 0 0 0 2px rgba(30,158,92,.85) !important; border-radius: 6px; }
+      .ttdfh-qc-missing { box-shadow: 0 0 0 2px rgba(220,38,38,.9) !important; border-radius: 6px; }
+      .ttdfh-qc-dot {
+        position: fixed; width: 9px; height: 9px; border-radius: 50%;
+        pointer-events: none; z-index: 2147483647; box-shadow: 0 0 0 2px #fff, 0 1px 3px rgba(0,0,0,.35);
+      }
+      .ttdfh-qc-dot-ok { background: #1E9E5C; }
+      .ttdfh-qc-dot-missing { background: #DC2626; }
+    `;
+    (document.head || document.documentElement).appendChild(style);
+  };
+
+  // Fields that make up the booking form: any visible, enabled text-ish
+  // input/select/textarea on the page, plus file inputs (which the site often
+  // hides behind a styled upload button, so those skip the visibility check).
+  // This is a *live* scan of the whole page — not a list of fields this run
+  // happened to write to — so a pilgrim row filled by hand, or left over from
+  // an earlier fill, is checked exactly the same as one this run just wrote.
+  const QC_FIELD_SELECTOR =
+    'input:not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([type="search"]), select, textarea';
+  const isOwnInjectedNode = (el) => !!el.closest('[id^="ttdfh-"]');
+  const collectFormFields = () => {
+    const out = [];
+    const seenRadioNames = new Set();
+    document.querySelectorAll(QC_FIELD_SELECTOR).forEach((el) => {
+      if (isOwnInjectedNode(el)) return;
+      if (el.type === "file") {
+        if (!el.disabled) out.push(el);
+        return;
+      }
+      if (el.disabled) return;
+      if (el.readOnly && !looksLikeCombobox(el)) return; // static/derived, not user-facing
+      if (!isVisible(el)) return; // not on the currently active step
+      if (el.type === "radio") {
+        const key = el.name || el;
+        if (seenRadioNames.has(key)) return; // one representative per radio group
+        seenRadioNames.add(key);
+      }
+      out.push(el);
+    });
+    return out;
+  };
+
+  const qcFieldStatus = (el) => {
+    if (!el || !el.isConnected) return null; // removed from the DOM — nothing to report
+    if (el.type === "file") return !!(el.files && el.files.length > 0);
+    if (el.type === "radio") {
+      // A tracked radio is just one representative of its group — the group
+      // "has a value" once any radio sharing its name is checked.
+      if (!el.name) return !!el.checked;
+      const esc = (window.CSS && CSS.escape) ? CSS.escape(el.name) : el.name;
+      const root = el.form || document;
+      return !!root.querySelector(`input[name="${esc}"]:checked`);
+    }
+    if (el.type === "checkbox") return !!el.checked;
+    return !!(el.value && el.value.toString().trim());
+  };
+  const qcFieldLabel = (el) => {
+    if (!el) return "field";
+    if (el.id) {
+      const lab = document.querySelector(`label[for="${(window.CSS && CSS.escape) ? CSS.escape(el.id) : el.id}"]`);
+      if (lab && lab.textContent.trim()) return lab.textContent.trim();
+    }
+    const aria = el.getAttribute("aria-label");
+    if (aria) return aria;
+    const wrapLabel = el.closest("label");
+    if (wrapLabel && wrapLabel.textContent.trim()) return wrapLabel.textContent.trim();
+    return el.placeholder || el.name || el.id || "field";
+  };
+
+  // Clears the previous run's marks/dots and their scroll listener, if any.
+  let qcCleanup = null;
+  const clearQC = () => {
+    if (qcCleanup) {
+      qcCleanup();
+      qcCleanup = null;
+    }
+  };
+
+  // Scans every field currently on the page, marks each green (has a value)
+  // or red (still blank) with a persistent ring + small dot, and shows a
+  // one-line pass/fail summary. Checkboxes and unselected radio groups are
+  // credited when set but never red-flagged when not — "unchecked" is a
+  // legitimate final state for most of those (optional multi-selects, etc.)
+  // and flagging them all would just be noise. Marks persist for a while so
+  // the user can spot problem fields at a glance, then clear automatically
+  // (or immediately on the next fill).
+  const runFieldQC = () => {
+    // Visual QC green outline boxes & dots hidden for now.
+    // To re-enable in the future, simply remove this 'return null;' line:
+    return null;
+
+    ensureQCStyles();
+    clearQC();
+
+    const fields = collectFormFields();
+    const entries = [];
+    const marked = [];
+    let okCount = 0;
+    const missingLabels = [];
+    let firstMissingEl = null;
+
+    const mark = (el, ok) => {
+      el.classList.add(ok ? "ttdfh-qc-ok" : "ttdfh-qc-missing");
+      marked.push(el);
+      if (ok) okCount++;
+      else {
+        missingLabels.push(qcFieldLabel(el));
+        if (!firstMissingEl) firstMissingEl = el;
+      }
+      if (isOnScreen(el)) {
+        const dot = document.createElement("div");
+        dot.className = "ttdfh-qc-dot " + (ok ? "ttdfh-qc-dot-ok" : "ttdfh-qc-dot-missing");
+        document.body.appendChild(dot);
+        entries.push({ el, dot });
+      }
+    };
+
+    for (const el of fields) {
+      if (el.type === "checkbox") {
+        if (el.checked) mark(el, true); // unchecked: optional, not flagged
+        continue;
+      }
+      if (el.type === "radio") {
+        if (qcFieldStatus(el)) mark(el, true); // no selection: optional, not flagged
+        continue;
+      }
+      mark(el, qcFieldStatus(el));
+    }
+
+    const reposition = () => {
+      for (const { el, dot } of entries) {
+        if (!el.isConnected || !isOnScreen(el)) {
+          dot.style.display = "none";
+          continue;
+        }
+        const rect = el.getBoundingClientRect();
+        dot.style.display = "block";
+        dot.style.left = rect.right - 4 + "px";
+        dot.style.top = rect.top - 4 + "px";
+      }
+    };
+    reposition();
+    window.addEventListener("scroll", reposition, true);
+    window.addEventListener("resize", reposition);
+
+    const cleanup = () => {
+      window.removeEventListener("scroll", reposition, true);
+      window.removeEventListener("resize", reposition);
+      entries.forEach(({ dot }) => dot.remove());
+      marked.forEach((el) => el.classList.remove("ttdfh-qc-ok", "ttdfh-qc-missing"));
+    };
+    qcCleanup = cleanup;
+    setTimeout(() => {
+      if (qcCleanup === cleanup) {
+        cleanup();
+        qcCleanup = null;
+      }
+    }, 20000);
+
+    const total = okCount + missingLabels.length;
+    if (total > 0) {
+      if (missingLabels.length === 0) {
+        toast(`✅ Self-QC: all ${okCount} field${okCount === 1 ? "" : "s"} on this page are filled.`, "success");
+      } else {
+        const shown = missingLabels.slice(0, 4).join(", ") + (missingLabels.length > 4 ? "…" : "");
+        toast(`⚠ Self-QC: ${okCount}/${total} fields filled. Blank: ${shown}`, "warn");
+        if (firstMissingEl) {
+          try {
+            firstMissingEl.scrollIntoView({ block: "center", behavior: prefersReducedMotion() ? "auto" : "smooth" });
+          } catch {}
+        }
+      }
+    }
+    return { ok: okCount, missing: missingLabels.length, missingLabels };
+  };
+
+  // ---- Wait-for-condition helpers (replace brittle fixed sleeps) ----
+  const waitFor = async (predicate, { timeout = 2500, interval = 60 } = {}) => {
+    const start = Date.now();
+    for (;;) {
+      let result;
+      try {
+        result = predicate();
+      } catch {
+        result = false;
+      }
+      if (result) return result;
+      if (Date.now() - start >= timeout) return null;
+      await sleep(interval);
+    }
+  };
+  const waitForElement = (selector, opts) => waitFor(() => document.querySelector(selector), opts);
+
+  // ---- Trusted-event fallback (content/page-bridge.js, MAIN world) ----
+  // TTD's shared text field ignores events the browser did not generate (see
+  // page-bridge.js). When a write or click doesn't take, ask the bridge to call
+  // the element's own React handler. Synchronous: the bridge's listener runs
+  // inside dispatchEvent and leaves its answer on the element.
+  const pageOp = (el, op, value) => {
+    if (!el || !el.isConnected) return false;
+    try {
+      el.removeAttribute("data-ttdfh-op");
+      el.dispatchEvent(
+        new CustomEvent("ttdfh:page-op", { bubbles: true, composed: true, detail: JSON.stringify({ op, value }) })
+      );
+      const answer = el.getAttribute("data-ttdfh-op");
+      el.removeAttribute("data-ttdfh-op");
+      return answer === "ok";
+    } catch {
+      return false;
+    }
+  };
+  // Clicks a checkbox; if the page put it straight back, clicks it through the bridge.
+  const clickCheckbox = (cb) => {
+    const before = cb.checked;
+    cb.click();
+    if (cb.checked === before) pageOp(cb, "click");
+  };
+
+  // ---- Unified controlled-input setter ----
+  // Drives the React synthetic onChange a controlled input attaches, if present.
+  const dispatchReactOnChange = (el, value, extra) => {
+    const propsKey = Object.keys(el).find((k) => k.startsWith("__reactProps$"));
+    if (!propsKey) return false;
+    const props = el[propsKey];
+    if (!props || typeof props.onChange !== "function") return false;
+    const base = { value, ...(extra || {}) };
+    try {
+      props.onChange({
+        target: base,
+        currentTarget: base,
+        preventDefault: () => {},
+        stopPropagation: () => {},
+        persist: () => {},
+        nativeEvent: new Event("change"),
+      });
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  // ---- Undo log: remember the prior value of each field a fill writes ----
+  // Recording is unconditional. It used to be gated on a `logging` flag that
+  // only the floating button switched on, so a fill started from the popup
+  // left the log empty and "Clear filled fields" reported nothing to clear.
+  let fillLog = new Map();
+  const beginLog = () => {
+    fillLog = new Map();
+  };
+  const recordPrev = (el) => {
+    if (!el || fillLog.has(el)) return;
+    try {
+      fillLog.set(el, el.value ?? "");
+    } catch {}
+  };
+
+  // Writes a value to a plain (non-dropdown) input: native prototype setter +
+  // input/change/blur, then the React onChange path if the framework ignored the
+  // native write. Highlights the field green when the value stuck, amber if not.
+  const setControlledValue = (el, value) => {
+    if (!el) return false;
+    recordPrev(el);
+    const target = value == null ? "" : String(value);
+    const previous = el.value ?? "";
+    const desc = Object.getOwnPropertyDescriptor(el.constructor.prototype, "value");
+    if (desc && desc.set) desc.set.call(el, target);
+    else el.value = target;
+    // React keeps a private value tracker on the node and ignores an `input`
+    // event whose value matches what it last recorded. Rewinding the tracker to
+    // the pre-write value guarantees it sees a genuine change and runs its
+    // onChange — without this, a field can carry the right text while React's
+    // own state stays empty, which is what leaves the site's Continue button
+    // disabled and its "required" error showing.
+    try {
+      const tracker = el._valueTracker;
+      if (tracker && typeof tracker.setValue === "function" && previous !== target) {
+        tracker.setValue(previous);
+      }
+    } catch {}
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+    // A field that refuses untrusted events has already put its old value back
+    // by now; hand the write to the page bridge, and only then tab out, so the
+    // site's onBlur check sees the new value rather than the reverted one.
+    if ((el.value || "") !== target && !pageOp(el, "change", target)) dispatchReactOnChange(el, target);
+    tabOut(el);
+    const ok = (el.value || "") === target || (!!el.value && target !== "");
+    flashField(el, ok);
+    return ok;
+  };
+  // Kept as the name the fillers already call throughout this file.
+  const setNativeValue = (el, value) => setControlledValue(el, value);
+
+  // Picks the right technique for a field: an autocomplete / read-only combobox
+  // needs the floating-list flow; a plain text input takes a direct write.
+  const looksLikeCombobox = (el) =>
+    !!el &&
+    (el.tagName === "SELECT" || el.tagName === "MAT-SELECT" || el.readOnly ||
+      el.getAttribute("role") === "combobox" ||
+      el.getAttribute("aria-autocomplete") === "list" ||
+      el.getAttribute("aria-haspopup") === "listbox" ||
+      el.hasAttribute("aria-expanded"));
+  const smartSet = async (el, value) => {
+    if (!el || value == null || value === "") return false;
+    if (looksLikeCombobox(el)) {
+      await selectFromDropdown(el, value);
+      if (el.value && el.value.trim()) {
+        flashField(el, true);
+        return true;
+      }
+      // Dropdown route left it empty — fall through to a direct write.
+    }
+    return setControlledValue(el, value);
+  };
+
+  // Fills a React-controlled "combobox" style input: click it open, wait for the
+  // floating option list to render, and click the option whose text matches.
+  const selectFromDropdown = async (el, label) => {
+    if (!el || !label) return false;
+    recordPrev(el);
+    if (el.tagName === "SELECT") {
+      const normLabel = label.trim().toLowerCase();
+      let opt = Array.from(el.options).find(o => o.value.trim().toLowerCase() === normLabel || o.text.trim().toLowerCase() === normLabel);
+      if (!opt) {
+        opt = Array.from(el.options).find(o => o.value.toLowerCase().includes(normLabel) || o.text.toLowerCase().includes(normLabel));
+      }
+      if (opt) {
+        const previous = el.value ?? "";
+        const desc = Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, "value") ||
+                     Object.getOwnPropertyDescriptor(el.constructor.prototype, "value");
+        if (desc && desc.set) desc.set.call(el, opt.value);
+        else el.value = opt.value;
+        try {
+          const tracker = el._valueTracker;
+          if (tracker && typeof tracker.setValue === "function" && previous !== opt.value) {
+            tracker.setValue(previous);
+          }
+        } catch {}
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+        el.dispatchEvent(new Event("change", { bubbles: true }));
+        if (!pageOp(el, "change", opt.value)) {
+          setViaReactProps(el, opt.value);
+        }
+        tabOut(el);
+        flashField(el, true);
+        return true;
+      }
+    }
+    if (el.value && el.value.trim().toLowerCase() === label.trim().toLowerCase()) return true;
+
+    const setViaReactProps = (node, val) => {
+      const propsKey = Object.keys(node).find(
+        (k) => k.startsWith("__reactFiber$") || k.startsWith("__reactInternalInstance$") || k.startsWith("__reactProps$")
+      );
+      if (propsKey && propsKey.startsWith("__reactProps$")) {
+        const props = node[propsKey];
+        if (props && props.onChange) {
+          const evt = {
+            target: { value: val },
+            currentTarget: { value: val },
+            preventDefault: () => {},
+            stopPropagation: () => {},
+            persist: () => {},
+            nativeEvent: new Event("change"),
+          };
+          try {
+            props.onChange(evt);
+            return true;
+          } catch {}
+        }
+      }
+      return false;
+    };
+
+    el.focus();
+    if (!pageOp(el, "click")) {
+      el.click();
+    }
+
+    let bridgedOpen = false;
+    for (let attempt = 0; attempt < 8; attempt++) {
+      await sleep(15);
+      const items = Array.from(
+        document.querySelectorAll(
+          '[class*="floatingDropdown_listItem"], [class*="dropdown_scroll"] li, .dropdown_scroll li, ul[style*="list-style-type: none"] li'
+        )
+      );
+      if (items.length === 0) {
+        // The opener ignored the synthetic click (untrusted); open it for real.
+        if (attempt >= 1 && !bridgedOpen) bridgedOpen = pageOp(el, "click");
+        continue;
+      }
+
+      const cleanText = (s) =>
+        s
+          .toLowerCase()
+          .replace(/['‘’`]/g, "'")
+          .replace(/["“”]/g, '"')
+          .replace(/\s+/g, " ")
+          .trim();
+      const match = items.find((it) => {
+        const txt = it.innerText?.trim();
+        return txt && cleanText(txt) === cleanText(label);
+      });
+      if (!match) continue;
+
+      const matchedText = match.innerText?.trim();
+      match.focus?.();
+      match.scrollIntoView?.({ block: "nearest" });
+      if (!pageOp(match, "click")) {
+        match.click();
+        match.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window, detail: 1 }));
+      }
+      await sleep(15);
+      if (cleanText(el.value || "") !== cleanText(matchedText) && match.isConnected && pageOp(match, "click")) {
+        await sleep(15);
+      }
+
+      if (!el.value || el.value.trim() === "") {
+        setViaReactProps(el, matchedText);
+        const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+        if (setter) {
+          setter.call(el, matchedText);
+          el.dispatchEvent(new Event("input", { bubbles: true }));
+          el.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+        await sleep(20);
+      }
+      el.dispatchEvent(new Event("input", { bubbles: true, cancelable: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+
+      // Nudge React state by clearing then restoring, in case onChange was missed.
+      const setter2 = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+      if (setter2 && el.value) {
+        const val = el.value;
+        setter2.call(el, "");
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+        await sleep(20);
+        setter2.call(el, val);
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+      await sleep(15);
+      el.dispatchEvent(new FocusEvent("blur", { bubbles: true, relatedTarget: document.body }));
+      document.body.click();
+      await sleep(80);
+      flashField(el, true);
+      return true;
+    }
+    return false;
+  };
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  // A single paint's worth of yield (~16ms) — far cheaper than a fixed
+  // 100ms+ sleep, but still gives the page's own React reconciliation a
+  // chance to run before the next synchronous write, which a zero-wait loop
+  // can race (and, on this site, occasionally lose — see fillPilgrim).
+  const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
+
+  const findByNameOrLabel = (name, labelText) => {
+    let el = document.querySelector(`input[name="${name}"], select[name="${name}"], input[formcontrolname="${name}"], select[formcontrolname="${name}"], #${name}`);
+    if (el) return el;
+    if (labelText) {
+      const nodes = document.querySelectorAll("label, span, div");
+      for (const node of nodes) {
+        const text = node.textContent?.trim().toLowerCase();
+        if (text && text.includes(labelText.toLowerCase())) {
+          const wrap = node.closest("div, .form-group, [class*='formGroup'], [class*='field']");
+          if (wrap && (el = wrap.querySelector("select, input, [role='combobox'], mat-select"))) return el;
+        }
+      }
+    }
+    return null;
+  };
+  const findFirstByNames = (...names) => {
+    for (const n of names) {
+      const el = document.querySelector(`input[name="${n}"], select[name="${n}"], input[formcontrolname="${n}"], select[formcontrolname="${n}"], #${n}`);
+      if (el) return el;
+    }
+    return null;
+  };
+  const findAllByNames = (...names) => {
+    for (const n of names) {
+      const nodes = document.querySelectorAll(`input[name="${n}"], select[name="${n}"], input[formcontrolname="${n}"], select[formcontrolname="${n}"], #${n}`);
+      if (nodes.length > 0) return Array.from(nodes);
+    }
+    return [];
+  };
+
+  // Contact details are stored on the pilgrim (TTD asks for one set per
+  // booking, not per person). Whatever the caller passed in wins; anything it
+  // is missing is taken, field by field, from the first pilgrim in this run
+  // who has that field set.
+  const CONTACT_FALLBACK_FIELDS = ["email", "city", "state", "country", "pincode", "gothram"];
+  const resolveEffectiveContact = (contact, pilgrims) => {
+    const base = { ...(contact || {}) };
+    for (const field of CONTACT_FALLBACK_FIELDS) {
+      if (base[field]) continue;
+      const donor = (pilgrims || []).find((p) => p && p[field]);
+      if (donor) base[field] = donor[field];
+    }
+    return base;
+  };
+
+  // Two frames: enough for React to commit an update a page-bridge write
+  // scheduled (that one is not flushed inside the event, as a real keystroke is).
+  const settle = async () => {
+    await nextFrame();
+    await nextFrame();
+  };
+  // Many TTD handlers save a copy of the form from the page's last render
+  // (`setPilgrims(pilgrims.map(...))`, `{ ...contact, [name]: value }`), and
+  // their onBlur checks read that copy, not the input. So a write can be wiped
+  // by the next one, and a field tabbed out of before React commits is marked
+  // "This field is required" while it shows the right value. After a group of
+  // writes: let React commit, write again whatever was lost, and tab out of
+  // every field once more so the checks run against what the page now holds.
+  const recheckFields = async (written) => {
+    const live = written.filter(([el]) => el && el.isConnected);
+    if (!live.length) return;
+    await settle();
+    for (const [el, value] of live) {
+      if (looksLikeCombobox(el)) {
+        if (!el.value || el.value.trim() === "") {
+          await smartSet(el, value);
+          await settle();
+        }
+      } else if ((el.value || "") !== value) {
+        setNativeValue(el, value);
+        await settle();
+      }
+    }
+    for (const [el] of live) tabOut(el);
+    await nextFrame();
+  };
+
+  // TTD's General Details handlers (email, city, pincode on the darshan
+  // pilgrim-details step) store `{ ...stateFromLastRender, [name]: value }`,
+  // and its pincode onBlur validates that last-render state rather than the
+  // input. Writing the five fields back to back in one task, as this used to,
+  // let each write wipe the one before it and left a stale "valid pincode"
+  // error behind, so Continue reported email/city/state/country as blank.
+  // So: one frame between writes (React commits, the next handler sees the new
+  // state), then put back anything that was still lost and tab out of each
+  // field once more so the onBlur checks run against the committed values.
+  const fillContact = async (contact) => {
+    if (!contact) return;
+    const written = [];
+    const write = async (el, value) => {
+      if (!el) return;
+      if (looksLikeCombobox(el)) {
+        await smartSet(el, value);
+      } else {
+        setNativeValue(el, value);
+      }
+      written.push([el, String(value)]);
+      await settle();
+    };
+    const lastOf = (...names) => {
+      const nodes = findAllByNames(...names);
+      return nodes[nodes.length - 1];
+    };
+    if (contact.email) await write(lastOf("pilgrimEmail", "emailId", "email"), contact.email);
+    if (contact.city) await write(lastOf("pilgrimCity", "city"), contact.city);
+    if (contact.country) await write(lastOf("pilgrimCountry", "country") || findByNameOrLabel("country", "Country"), contact.country);
+    if (contact.state) {
+      const stateEl =
+        lastOf("pilgrimState", "state") ||
+        findByNameOrLabel("state", "State") ||
+        document.querySelector('select[name="state"], select[formcontrolname="state"], mat-select[formcontrolname="state"], select[name="pilgrimState"], select#state, #state');
+      if (stateEl) {
+        await write(stateEl, contact.state);
+      }
+    }
+    if (contact.pincode) await write(findFirstByNames("pilgrimPincode", "pincode"), contact.pincode);
+    if (contact.gothram) {
+      // The gothram field name varies across booking flows (the Homam / arjitha
+      // seva form in particular), and on some pages it is a searchable
+      // autocomplete rather than a plain input — so try several names/labels and
+      // let smartSet choose the direct-write vs floating-list technique.
+      const el =
+        findFirstByNames("gothram", "gotram", "gotra", "gothra", "gothramName", "pilgrimGothram") ||
+        findByNameOrLabel("gothram", "Gothram") ||
+        findByNameOrLabel("gotra", "Gotra");
+      if (el) {
+        const ok = await smartSet(el, contact.gothram);
+        if (!ok) flashField(el, false);
+        else if (!looksLikeCombobox(el)) written.push([el, String(contact.gothram)]);
+      }
+    }
+    await recheckFields(written);
+  };
+
+  const nthByNames = (index, ...names) => {
+    for (const n of names) {
+      const nodes = document.querySelectorAll(`input[name="${n}"], select[name="${n}"], input[formcontrolname="${n}"], select[formcontrolname="${n}"]`);
+      if (nodes.length > index) return nodes[index];
+      const byIndexed = document.querySelector(`input[id="${n}_${index}"], select[id="${n}_${index}"], input[formcontrolname="${n}_${index}"], select[formcontrolname="${n}_${index}"], input[name="${n}_${index}"], select[name="${n}_${index}"]`);
+      if (byIndexed) return byIndexed;
+    }
+    return null;
+  };
+
+  const fillPilgrim = async (pilgrim, index, contactCountry) => {
+    const byIndex = (name) => {
+      const nodes = document.querySelectorAll(`input[name="${name}"], select[name="${name}"]`);
+      if (nodes.length > index) return nodes[index];
+      const byIndexed = document.querySelector(`input[id="${name}_${index}"], select[id="${name}_${index}"], input[formcontrolname="${name}_${index}"], select[formcontrolname="${name}_${index}"], input[name="${name}_${index}"], select[name="${name}_${index}"]`);
+      if (byIndexed) return byIndexed;
+      return null;
+    };
+
+    // Plain inputs write and dispatch their events synchronously, so a fixed
+    // 100ms+ pause between them was dead time — but a *zero*-wait loop can
+    // still race a re-render the page's own listeners trigger off that
+    // dispatch, silently losing a write. A single-frame yield (~16ms) splits
+    // the difference: still 6-9x faster than the old fixed sleeps, but gives
+    // the page a paint cycle between writes so nothing gets dropped.
+    // Each write waits for React to commit (settle) because the seva rows'
+    // handler rebuilds the row list from its last render; see recheckFields.
+    const written = [];
+    const nameEl = nthByNames(index, "name", "fname");
+    if (nameEl && pilgrim.name) {
+      setNativeValue(nameEl, pilgrim.name);
+      written.push([nameEl, String(pilgrim.name)]);
+    }
+    await settle();
+
+    const ageEl = byIndex("age");
+    // A disabled age that already holds a value was set by an earlier step (the
+    // Senior Citizen slot page carries pilgrim 1's age forward); writing over it
+    // would only fight the page.
+    if (ageEl && pilgrim.age && !(ageEl.disabled && ageEl.value)) {
+      setNativeValue(ageEl, pilgrim.age);
+      written.push([ageEl, String(pilgrim.age)]);
+    }
+    // The seva form keeps Photo ID Proof disabled until the age is committed.
+    await settle();
+
+    const genderEl = byIndex("gender");
+    if (genderEl) await selectFromDropdown(genderEl, pilgrim.gender);
+    await sleep(20);
+
+    const idTypeEl = nthByNames(index, "idType", "photoIdType", "idProofType");
+    if (idTypeEl) {
+      const idProof = (pilgrim.idProof || "Aadhaar Card").trim();
+      await selectFromDropdown(idTypeEl, idProof);
+      await sleep(35);
+    }
+
+    const isPassport = norm(pilgrim.idProof) === "passport";
+    const idNumberEl = nthByNames(index, "idNumber", "idProofNumber");
+    if (idNumberEl) {
+      if (idNumberEl.disabled) idNumberEl.disabled = false;
+      setNativeValue(idNumberEl, pilgrim.idNumber);
+      // A passport number goes through the visa popup below instead.
+      if (pilgrim.idNumber && !isPassport) written.push([idNumberEl, String(pilgrim.idNumber)]);
+    }
+    await recheckFields(written);
+
+    if (isPassport) {
+      // Wait for the modal to be present *and* mounted (a field rendered),
+      // rather than a fixed sleep that can fire before React fills it in.
+      const popup = await waitFor(() => {
+        const p =
+          document.querySelector('[class*="passportVisaPopup"]') ||
+          document.querySelector('[class*="popup"]') ||
+          document.querySelector('[class*="modal"]');
+        return p && p.querySelector("input") ? p : null;
+      }, { timeout: 4000, interval: 150 });
+      if (popup) {
+        const field = (name) => popup.querySelector(`input[name="${name}"]`);
+        const passportCountry = pilgrim.passportCountry || contactCountry;
+        const wanted = [
+          ["passportNumber", pilgrim.idNumber, "Passport number"],
+          ["country", passportCountry, "Country"],
+          ["visaNumber", pilgrim.visaNumber, "Visa number"],
+          ["visaType", pilgrim.visaType, "Visa type"],
+          ["visaValidityDate", pilgrim.visaValidityDate, "Visa validity"],
+        ];
+        for (const [name, value] of wanted) {
+          if (!value) continue;
+          const el = field(name);
+          if (el) {
+            await smartSet(el, value);
+            await sleep(120);
+          }
+        }
+        // Confirm each value actually took before trying to submit.
+        const missing = wanted
+          .filter(([name, value]) => value && (() => { const el = field(name); return !el || !el.value || !el.value.trim(); })())
+          .map(([, , label]) => label);
+        await sleep(300);
+        const submitBtn =
+          popup.querySelector('button[type="submit"]') ||
+          popup.querySelector('button[class*="continueBtn"]') ||
+          Array.from(popup.querySelectorAll("button")).find((b) => b.innerText?.toLowerCase().includes("submit"));
+        if (submitBtn && !submitBtn.disabled && missing.length === 0) {
+          submitBtn.click();
+          await sleep(1000);
+        } else if (missing.length > 0) {
+          toast("Passport popup: still missing " + missing.join(", ") + ". Please review before submitting.", "warn");
+        }
+      }
+    }
+  };
+
+  const setSelectByLabel = (selectEl, label) => {
+    if (!selectEl || !label) return false;
+    const target = norm(label);
+    const options = Array.from(selectEl.options);
+    const match =
+      options.find((o) => norm(o.textContent) === target) ||
+      options.find((o) => norm(o.textContent).includes(target));
+    if (!match) return false;
+    setNativeValue(selectEl, match.value);
+    return true;
+  };
+
+  const fillSrivaniMember = async (person, index) => {
+    if (!person || !person.name || !person.name.trim()) return;
+    const nameEl = document.querySelector(`input[name="fName${index}"]`);
+    if (nameEl) setNativeValue(nameEl, person.name);
+
+    const ageEl = document.querySelector(`input[name="age${index}"]`);
+    if (ageEl && person.age) {
+      setNativeValue(ageEl, person.age);
+      await sleep(400);
+    }
+
+    const genderEl = document.querySelector(`select[name="gender${index}"]`);
+    if (genderEl && person.gender) setSelectByLabel(genderEl, person.gender);
+
+    const proofEl = document.querySelector(`select[name="proofS${index}"]`);
+    if (proofEl && person.idProof) {
+      for (let i = 0; i < 20 && proofEl.options.length <= 1; i++) await sleep(150);
+      const value = person.idProof === "Passport" ? "passport" : "aadha";
+      setSelectByLabel(proofEl, value);
+      await sleep(250);
+    }
+
+    const idEl = document.querySelector(`input[name="proofId${index}"]`);
+    if (idEl && person.idNumber) setNativeValue(idEl, person.idNumber);
+  };
+
+  // Fills up to nine Srivani members, keeping the Continue button watched while
+  // the SPA remounts. Shared by the popup message handler and the floating button.
+  const fillSrivaniMembers = async (members) => {
+    const stopWatching = watchForContinueButton();
+    try {
+      const first = document.querySelector('input[name="fName0"]');
+      const form = first && first.closest("form");
+      const formHidden = !!form && form.classList.contains("ng-hide");
+      const startIndex = first && !formHidden && !(first.value || "").trim() ? 0 : 1;
+      const upTo9 = (members || []).slice(0, 9);
+      let filled = 0;
+      for (let i = 0; i < upTo9.length; i++) {
+        if (upTo9[i] && upTo9[i].name && upTo9[i].name.trim()) {
+          announce("Filling Srivani member " + (i + 1) + " of " + upTo9.length);
+          filled++;
+        }
+        await fillSrivaniMember(upTo9[i], startIndex + i);
+        await sleep(150);
+      }
+      await sleep(400);
+      clickContinueIfPresent();
+      return { status: "success", filled };
+    } finally {
+      stopWatching();
+    }
+  };
+
+  const isVisible = (el) => {
+    if (!el || el.closest(".ng-hide, [hidden]")) return false;
+    const style = window.getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+  };
+
+  // "Break Darshan" continue button: click it when it appears (and keep
+  // re-clicking while the SPA remounts it) so the pilgrim step advances on its own.
+  let lastAutoClick = 0;
+  const clickContinueIfPresent = () => {
+    const btn = document.querySelector("#pasok");
+    if (!btn || !isVisible(btn)) return false;
+    const now = Date.now();
+    if (now - lastAutoClick < 1000) return false;
+    lastAutoClick = now;
+    btn.click();
+    return true;
+  };
+  const watchForContinueButton = () => {
+    clickContinueIfPresent();
+    let observer = null;
+    let pending = false;
+    const trigger = () => {
+      if (pending) return;
+      pending = true;
+      setTimeout(() => {
+        pending = false;
+        clickContinueIfPresent();
+      }, 150);
+    };
+    try {
+      observer = new MutationObserver(trigger);
+      observer.observe(document.body, { childList: true, subtree: true });
+    } catch {}
+    return () => observer && observer.disconnect();
+  };
+
+  const fillAllPilgrims = async (pilgrims, contact, opts = {}) => {
+    const { onProgress, overwrite = false } = opts;
+    contact = resolveEffectiveContact(contact, pilgrims);
+    let nameInputs = Array.from(document.querySelectorAll('input[name="name"], input[name="fname"]'));
+    if (nameInputs.length === 0) nameInputs = Array.from(document.querySelectorAll('input[id^="name_"], input[formcontrolname^="name_"]'));
+    if (nameInputs.length === 0) return { status: "error", message: "Name inputs not found" };
+
+    // "Only empty" (default) skips rows that already hold a value; "overwrite"
+    // fills the first N rows regardless of what's in them.
+    let slots;
+    if (overwrite) {
+      slots = [];
+      const n = Math.min(nameInputs.length, pilgrims.length);
+      for (let i = 0; i < n; i++) slots.push(i);
+    } else {
+      slots = [];
+      for (let i = 0; i < nameInputs.length; i++) {
+        if (!nameInputs[i].value || nameInputs[i].value.trim() === "") slots.push(i);
+      }
+    }
+    if (slots.length === 0) { const n = Math.min(nameInputs.length, pilgrims.length); for (let i = 0; i < n; i++) slots.push(i); }
+    const count = Math.min(slots.length, pilgrims.length);
+    for (let i = 0; i < count; i++) {
+      if (typeof onProgress === "function") onProgress(i + 1, count);
+      announce("Filling pilgrim " + (i + 1) + " of " + count);
+      await fillPilgrim(pilgrims[i], slots[i], contact ? contact.country : undefined);
+      // A single-frame yield (not a fixed 150ms) — each pilgrim row is a
+      // static, already-rendered field set, so there's nothing to wait for
+      // beyond giving the page's own listeners one paint cycle between rows.
+      await nextFrame();
+    }
+    if (contact) await fillContact(contact);
+    return { status: "success", filled: count };
+  };
+
+  // Fills the next still-empty pilgrim row with the next saved pilgrim who
+  // isn't on the page yet, skipping anyone already there by name — however
+  // they got there. Shared by the floating button and the panel's
+  // "Fill next empty pilgrim" action so both behave identically.
+  const fillNextPilgrim = async (pilgrims, contact) => {
+    let nameInputs = Array.from(document.querySelectorAll('input[name="name"]'));
+    if (!nameInputs.length) nameInputs = Array.from(document.querySelectorAll('input[name="fname"]'));
+    if (!nameInputs.length) return { status: "error", message: "No pilgrim rows found on this page." };
+
+    const onPage = new Set(nameInputs.map((el) => norm(el.value)).filter(Boolean));
+    const next = (pilgrims || []).find((p) => p && p.name && !onPage.has(norm(p.name)));
+    if (!next) return { status: "noop", message: "All saved pilgrims are already on this form." };
+
+    const slot = nameInputs.findIndex((el) => !el.value || !el.value.trim());
+    if (slot === -1) return { status: "noop", message: "Every pilgrim row on this page is already filled." };
+
+    await fillPilgrim(next, slot, contact ? contact.country : undefined);
+    if (contact) await fillContact(contact);
+    return { status: "success", filled: 1, name: next.name, slot };
+  };
+
+  // ---- Senior Citizen darshan (PLD, category "sc") ----
+  // The pilgrim-details step at /pld/pilgrim-details uses the same pilgrim
+  // component as the other darshan flows (name / age / gender / idType /
+  // idNumber, contact as pilgrimCity / pilgrimState / pilgrimPincode ...), plus
+  // one "Upload Document" file input (accept ".jpeg,.png,.pdf") for the Aadhaar
+  // age proof. The site's rules, from its own page code: the first pilgrim must be
+  // 65-150, only the spouse may be the second, and the file must be at most
+  // 1,024,000 bytes (it rejects `size > 1024e3`).
+  const SENIOR_MAX_PILGRIMS = 2;
+  const SENIOR_MIN_AGE = 65;
+  const SENIOR_PROOF_MAX = 1024000;
+  const isSeniorPage = () => /^\/pld\//i.test(location.pathname || "");
+  const findSeniorProofInput = () => {
+    const inputs = Array.from(document.querySelectorAll('input[type="file"]')).filter((i) => !isOwnInjectedNode(i));
+    return inputs.find((i) => /pdf/i.test(i.accept || "")) || inputs[0] || null;
+  };
+  const seniorWarnings = (pilgrims) => {
+    const named = (pilgrims || []).filter((p) => p && p.name && String(p.name).trim());
+    const out = [];
+    if (named.length > SENIOR_MAX_PILGRIMS) {
+      out.push("Only the first " + SENIOR_MAX_PILGRIMS + " pilgrims are used: the senior citizen and their spouse.");
+    }
+    const first = named[0];
+    const age = first ? parseInt(first.age, 10) : NaN;
+    if (first && (!isFinite(age) || age < SENIOR_MIN_AGE)) {
+      out.push(first.name + " is " + (first.age || "?") + ". TTD needs the first pilgrim to be " + SENIOR_MIN_AGE + " or older.");
+    }
+    return out;
+  };
+
+  // Fills the (up to two) pilgrim rows and the contact block, then attaches the
+  // stored age proof. Never presses Continue on its own; the caller decides.
+  // proofState: attached | failed | missing (page wants one, none saved) |
+  //             too_big | no_input (a proof is saved, but this step has no upload) | none
+  const fillSeniorForm = async (pilgrims, contact, proof, opts = {}) => {
+    const list = (pilgrims || []).filter((p) => p && p.name && String(p.name).trim()).slice(0, SENIOR_MAX_PILGRIMS);
+    contact = resolveEffectiveContact(contact, list);
+    let result = { status: "success", filled: 0 };
+    if (document.querySelector('input[name="name"], input[name="fname"]')) {
+      result = await fillAllPilgrims(list, contact, { overwrite: !!opts.overwrite, onProgress: opts.onProgress });
+    } else if (contact) {
+      await fillContact(contact);
+    }
+    const input = findSeniorProofInput();
+    let proofState;
+    if (!proof || !proof.data) proofState = input ? "missing" : "none";
+    else if (proof.size > SENIOR_PROOF_MAX) proofState = "too_big";
+    else if (!input) proofState = "no_input";
+    else proofState = (await setFileInput(input, proof)) ? "attached" : "failed";
+    return { ...result, proofState, warnings: seniorWarnings(pilgrims) };
+  };
+  const SENIOR_PROOF_TEXT = {
+    attached: "📎 Age proof attached.",
+    failed: "⚠️ Could not attach the age proof. Pick the file on the page yourself.",
+    missing: "⚠️ No age proof saved. Add the Aadhaar PDF/PNG in the extension's Senior Citizen tab, or pick it on the page.",
+    too_big: "⚠️ The saved age proof is over 1 MB, and TTD will refuse it. Replace it in the Senior Citizen tab.",
+    no_input: "",
+    none: "",
+  };
+
+  // ---- Undo the last fill and generalized Continue handling ----
+  // Empties one field for real.
+  //
+  // A plain `setControlledValue(el, "")` isn't enough for the form's
+  // React-controlled comboboxes — Gender and ID type are read-only inputs whose
+  // text comes from component state, not from the DOM node. The native write
+  // leaves `el.value === ""`, which matches the target, so the React fallback
+  // in setControlledValue never fires and the component re-renders its old
+  // label straight back. Driving onChange with an empty value explicitly is
+  // what actually clears those.
+  const clearField = (el) => {
+    if (!el) return false;
+    if (el.tagName === "SELECT") {
+      const blank = Array.from(el.options).findIndex((o) => !o.value);
+      el.selectedIndex = blank >= 0 ? blank : -1;
+      dispatchAll(el);
+      dispatchReactOnChange(el, "");
+      return !el.value;
+    }
+    setControlledValue(el, "");
+    dispatchReactOnChange(el, ""); // unconditional: the DOM may already read ""
+    return !el.value;
+  };
+
+  const isClearable = (el) =>
+    el.type !== "file" && el.type !== "checkbox" && el.type !== "radio";
+  const stillFilled = (el) => el.isConnected && !!el.value && !!String(el.value).trim();
+
+  // Undo the last fill *and* empty anything else the form is holding, in one
+  // pass. This used to restore from the undo log and return early, so a value
+  // the log couldn't shift (see clearField) survived the first click and was
+  // only caught by the fallback sweep on the second — hence "clear needs two
+  // clicks". There is no early return now: whatever is still filled at the end
+  // of the pass gets cleared in the same click.
+  // `restore` distinguishes the two callers: the floating button's menu item is
+  // "Undo / clear", so it puts back anything the user had typed before the fill
+  // overwrote it; the panel's button just says "Clear", so it empties
+  // everything and never resurrects an old value.
+  const clearFilled = async ({ restore = true } = {}) => {
+    const restoreTargets = [];
+    if (restore) {
+      for (const [el, prev] of fillLog) {
+        if (el && el.isConnected && prev && String(prev).trim()) restoreTargets.push([el, prev]);
+      }
+    }
+    const restoredEls = new Set();
+    for (const [el, prev] of restoreTargets) {
+      setControlledValue(el, prev);
+      restoredEls.add(el);
+    }
+
+    const sweep = () => {
+      let n = 0;
+      for (const el of collectFormFields()) {
+        if (!isClearable(el) || restoredEls.has(el) || !stillFilled(el)) continue;
+        clearField(el);
+        n++;
+      }
+      return n;
+    };
+
+    const cleared = sweep();
+    // React can put a controlled value back on its next render, so give it a
+    // frame and sweep once more — that second pass is what used to require a
+    // second click.
+    await nextFrame();
+    const leftovers = collectFormFields().filter(
+      (el) => isClearable(el) && !restoredEls.has(el) && stillFilled(el)
+    );
+    for (const el of leftovers) clearField(el);
+
+    // Emptied last, not first: every write above runs through
+    // setControlledValue, which records the pre-write value — so clearing the
+    // log any earlier would leave it holding the values just cleared, and the
+    // next click would put them all back.
+    fillLog.clear();
+    clearQC();
+    const restored = restoredEls.size;
+    if (cleared === 0 && restored === 0) {
+      toast("Nothing to clear — every field on this form is already empty.", "warn");
+      return;
+    }
+    const parts = [];
+    if (cleared > 0) parts.push("cleared " + cleared + " field" + (cleared === 1 ? "" : "s"));
+    if (restored > 0) parts.push("restored " + restored + " to their previous value" + (restored === 1 ? "" : "s"));
+    toast("🧹 " + parts.join(", ") + ".", "success");
+  };
+
+  // A Continue/Next/Proceed button, by stable id or button text — but never a
+  // pay / submit / book / confirm action.
+  const CONTINUE_RE = /^(continue|next|proceed|save\s*&?\s*continue|save and continue)$/i;
+  const findContinueButton = () => {
+    const pasok = document.querySelector("#pasok");
+    if (pasok && isVisible(pasok)) return pasok;
+    const btns = Array.from(document.querySelectorAll('button, input[type="button"], input[type="submit"], a[role="button"]'));
+    return (
+      btns.find((b) => {
+        if (!isVisible(b) || b.disabled) return false;
+        const txt = (b.innerText || b.value || "").trim();
+        if (!CONTINUE_RE.test(txt)) return false;
+        if (/pay|submit|book|confirm|delete|remove|cancel/i.test(txt)) return false;
+        return true;
+      }) || null
+    );
+  };
+  const clickContinueGeneric = async () => {
+    const btn = findContinueButton();
+    if (!btn) {
+      toast("No Continue button found on this step.", "warn");
+      return false;
+    }
+    btn.click();
+    await sleep(300);
+    return true;
+  };
+
+  // ---- message handling: no license/paywall check, autofill runs immediately ----
+  // Only this extension's own popup may drive a fill. Pages on the TTD site
+  // cannot reach this listener (no `externally_connectable` is declared), but
+  // the sender is checked anyway so a stray message can never move real data.
+  const isOwnExtension = (sender) => !!sender && sender.id === chrome.runtime.id;
+
+  // One fill at a time, whether triggered from the popup or the on-page button.
+  const FILL_ACTIONS = new Set([
+    "AUTOFILL", "FILL_SEVA", "FILL_ALL", "FILL_CONTACT", "FILL_SRIVANI", "FILL_NEXT", "CLEAR_FIELDS", "FILL_SENIOR", "TRIGGER_AUTOFILL",
+  ]);
+  let globalFilling = false;
+
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (!message || !isOwnExtension(sender)) return;
+
+    if (FILL_ACTIONS.has(message.action)) {
+      if (globalFilling) {
+        sendResponse({ status: "error", message: "A fill is already running — please wait for it to finish." });
+        return true;
+      }
+      globalFilling = true;
+      // Same fresh undo log the floating button starts, so a fill driven from
+      // the popup can be reverted by "Clear filled fields" as well. Clearing is
+      // the one action that must NOT reset it — it's what it reads to undo.
+      if (message.action !== "CLEAR_FIELDS") beginLog();
+      const original = sendResponse;
+      // Clear the lock whenever the handler responds (success or error), with a
+      // safety timeout in case a handler never replies.
+      let cleared = false;
+      const release = () => {
+        if (cleared) return;
+        cleared = true;
+        globalFilling = false;
+      };
+      setTimeout(release, 60000);
+      sendResponse = (resp) => {
+        release();
+        try {
+          original(resp);
+        } catch {}
+      };
+    }
+
+    if (message.action === "TRIGGER_AUTOFILL") {
+      (async () => {
+        try {
+          const { pilgrims: list, contact } = await loadSavedData();
+          if (list && list.length > 0) {
+            const result = await fillAllPilgrims(list, contact, { overwrite: true });
+            sendResponse({ ...result, qc: runFieldQC() });
+          } else {
+            sendResponse({ status: "error", message: "No pilgrims saved" });
+          }
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "AUTOFILL") {
+      const { pilgrim } = message.data;
+      const contact = resolveEffectiveContact(message.data.contact, [pilgrim]);
+      (async () => {
+        try {
+          let nameInputs = Array.from(document.querySelectorAll('input[name="name"]'));
+          if (nameInputs.length === 0) nameInputs = Array.from(document.querySelectorAll('input[name="fname"]'));
+          if (nameInputs.length === 0) {
+            sendResponse({ status: "error", message: "Name inputs not found" });
+            return;
+          }
+          let slot = -1;
+          for (let i = 0; i < nameInputs.length; i++) {
+            if (!nameInputs[i].value || nameInputs[i].value.trim() === "") {
+              slot = i;
+              break;
+            }
+          }
+          if (slot === -1 && nameInputs.length > 0) slot = nameInputs.length - 1;
+          if (slot !== -1) await fillPilgrim(pilgrim, slot, contact.country);
+          await fillContact(contact);
+          sendResponse({ status: "success", qc: runFieldQC() });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.message || err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "FILL_SEVA") {
+      const { sevakData } = message.data;
+      (async () => {
+        try {
+          await fillSevaForm(sevakData, sevakData.memberIndex);
+          sendResponse({ status: "success", qc: runFieldQC() });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.message || err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "FILL_ALL") {
+      const { pilgrims, contact, thenContinue } = message.data;
+      (async () => {
+        try {
+          const result = await fillAllPilgrims(pilgrims, contact);
+          const qc = runFieldQC();
+          if (thenContinue && result.status === "success") await clickContinueGeneric();
+          sendResponse({ ...result, qc });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "FILL_NEXT") {
+      const { pilgrims, contact } = message.data;
+      (async () => {
+        try {
+          const result = await fillNextPilgrim(pilgrims, resolveEffectiveContact(contact, pilgrims));
+          if (result.status === "noop") {
+            toast(result.message, "warn");
+            sendResponse({ status: "success", filled: 0, message: result.message });
+            return;
+          }
+          sendResponse({ ...result, qc: result.status === "success" ? runFieldQC() : undefined });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "CLEAR_FIELDS") {
+      (async () => {
+        try {
+          // The panel's button is labelled "Clear", so it empties the form
+          // outright rather than restoring pre-fill values.
+          await clearFilled({ restore: false });
+          sendResponse({ status: "success" });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "FILL_CONTACT") {
+      const { contact } = message.data;
+      (async () => {
+        try {
+          await fillContact(contact);
+          sendResponse({ status: "success", qc: runFieldQC() });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "FILL_SENIOR") {
+      const { pilgrims, contact, proof, thenContinue, overwrite } = message.data || {};
+      (async () => {
+        try {
+          const result = await fillSeniorForm(pilgrims, contact, proof, { overwrite });
+          const qc = runFieldQC();
+          const notes = [...(result.warnings || []), SENIOR_PROOF_TEXT[result.proofState]].filter(Boolean);
+          if (notes.length) toast(notes.join(" "), result.proofState === "attached" && !(result.warnings || []).length ? "success" : "warn");
+          if (thenContinue && result.status === "success" && result.proofState !== "failed" && result.proofState !== "missing") {
+            await clickContinueGeneric();
+          }
+          sendResponse({ ...result, qc });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+
+    if (message.action === "FILL_SRIVANI") {
+      const { members } = message.data;
+      (async () => {
+        try {
+          const result = await fillSrivaniMembers(members);
+          sendResponse({ ...result, qc: runFieldQC() });
+        } catch (err) {
+          sendResponse({ status: "error", message: err.toString() });
+        }
+      })();
+      return true;
+    }
+  });
+
+  // ---- File inputs (Seva photo/ID uploads, Senior Citizen age proof) ----
+  // A stored {data: dataURL, name, type} is rebuilt as a File and put on the
+  // input through a DataTransfer, then React's onChange is driven, since the site
+  // reads event.target.files[0] from its own handler.
+  const dataUrlToFile = (dataUrl, name, type) => {
+    const binary = atob(dataUrl.split(",")[1]);
+    const buffer = new ArrayBuffer(binary.length);
+    const bytes = new Uint8Array(buffer);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new File([buffer], name, { type });
+  };
+  const applyFile = (input, fileMeta) => {
+    const file = dataUrlToFile(fileMeta.data, fileMeta.name, fileMeta.type);
+    const dt = new DataTransfer();
+    dt.items.add(file); // a fresh DataTransfer replaces any previously staged file
+    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "files")?.set;
+    if (setter) setter.call(input, dt.files);
+    else input.files = dt.files;
+    dispatchReactOnChange(input, fileMeta.name, { files: dt.files, type: "file" });
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+    dispatchAll(input);
+  };
+  const setFileInput = async (input, fileMeta) => {
+    if (!input || !fileMeta || !fileMeta.data) return false;
+    try {
+      applyFile(input, fileMeta);
+      await sleep(80);
+      // Verify the file actually attached; retry once if the UI dropped it.
+      if (!(input.files && input.files.length === 1)) {
+        applyFile(input, fileMeta);
+        await sleep(120);
+      }
+      const ok = !!(input.files && input.files.length >= 1);
+      flashField(input, ok);
+      return ok;
+    } catch {
+      flashField(input, false);
+      return false;
+    }
+  };
+
+  // ---- Seva (Srivari Seva / Group) form filler ----
+  const fillSevaForm = async (data) => {
+    let scope = document;
+    if (typeof data.memberIndex === "number") {
+      const containers = document.querySelectorAll('.profile_sevakContainer__APYsI, [class*="sevakContainer"]');
+      if (containers.length > data.memberIndex) scope = containers[data.memberIndex];
+      else if (containers.length > 0) scope = containers[containers.length - 1];
+    }
+
+    const pick = (selector) => {
+      const nodes = Array.from(scope.querySelectorAll(selector));
+      if (nodes.length === 0) return null;
+      let found = nodes
+        .slice()
+        .reverse()
+        .find((n) => {
+          const rect = n.getBoundingClientRect();
+          const visible = n.offsetParent !== null && rect.width > 0 && rect.height > 0;
+          const empty = !n.value || n.value.trim() === "";
+          return visible && empty;
+        });
+      if (found) return found;
+      found = nodes
+        .slice()
+        .reverse()
+        .find((n) => {
+          const rect = n.getBoundingClientRect();
+          return n.offsetParent !== null && rect.width > 0 && rect.height > 0;
+        });
+      return found || nodes[nodes.length - 1];
+    };
+
+    const setByName = (name, value) => {
+      if (!value) return false;
+      const el = pick(`input[name="${name}"]`);
+      if (!el) return false;
+      setNativeValue(el, value);
+      return true;
+    };
+
+    const waitForNonEmpty = async (selector, timeout = 1000) => {
+      const start = Date.now();
+      while (Date.now() - start < timeout) {
+        const el = pick(selector);
+        if (el && el.value && el.value.trim().length > 0) return el.value;
+        await sleep(100);
+      }
+      return null;
+    };
+
+    const checkRadioGroupByValue = (name, value) => {
+      if (!value) return;
+      const group = scope.querySelectorAll(`input[name="${name}"]`);
+      group.forEach((el) => {
+        if (el.value.toLowerCase() === value.toLowerCase()) {
+          el.checked = true;
+          el.click();
+          dispatchAll(el);
+        }
+      });
+    };
+
+    const setReadOnlyLikeInput = async (name, value) => {
+      if (!value) return;
+      const el = pick(`input[name="${name}"]`) || pick(`input#${name}`);
+      if (el) setNativeValue(el, value);
+    };
+
+    await waitForNonEmpty('#idType, input[name="idType"], input[name="photoIdType"], input[name="spvrIdType"]', 400);
+
+    const idType = (data.idType || "Aadhaar Card").trim();
+    const idTypeEl =
+      pick("#idType") || pick('input[name="idType"]') || pick('input[name="photoIdType"]') || pick('input[name="spvrIdType"]');
+
+    const setDropdownRetrying = async (el, value, tries = 2) => {
+      for (let attempt = 1; attempt <= tries; attempt++) {
+        await selectFromDropdown(el, value);
+        await sleep(80);
+        if (el.value && el.value.trim() !== "") return true;
+        const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+        if (setter) {
+          setter.call(el, value);
+          el.dispatchEvent(new Event("input", { bubbles: true }));
+          el.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+        await sleep(50);
+        const propsKey = Object.keys(el).find((k) => k.startsWith("__reactProps$"));
+        if (propsKey) {
+          const props = el[propsKey];
+          if (props && props.onChange) {
+            try {
+              props.onChange({
+                target: { value },
+                currentTarget: { value },
+                preventDefault: () => {},
+                stopPropagation: () => {},
+                persist: () => {},
+                nativeEvent: new Event("change"),
+              });
+            } catch {}
+          }
+        }
+        await sleep(150);
+        if (el.value && el.value.trim() !== "") return true;
+        el.dispatchEvent(new FocusEvent("blur", { bubbles: true }));
+        document.body.click();
+        await sleep(100);
+      }
+      return false;
+    };
+
+    const isAadhaar = idType.toLowerCase().includes("aadhaar");
+    if (idTypeEl && !isAadhaar) await setDropdownRetrying(idTypeEl, idType);
+    await sleep(150);
+
+    setByName("idNumber", data.idNumber);
+    setByName("spvrName", data.spvrName) || setByName("trainerName", data.spvrName);
+    setByName("spvrRelativeName", data.spvrRelativeName) || setByName("trainerRelativeName", data.spvrRelativeName);
+    await setReadOnlyLikeInput("dob", data.dob);
+    await sleep(100);
+    setByName("age", data.age);
+    checkRadioGroupByValue("gender", data.gender?.toLowerCase());
+    if (data.maritalStatus) {
+      await selectFromDropdown(pick('input[name="maritalStatus"]'), data.maritalStatus);
+      await sleep(50);
+    }
+    setByName("mobileNo", data.mobileNo);
+    setByName("altMobileNo", data.altMobileNo);
+    setByName("emailId", data.email) || setByName("email", data.email);
+    setByName("residentialAdrs", data.residentialAdrs);
+    setByName("pincode", data.pincode);
+
+    if (data.country) {
+      await selectFromDropdown(pick('input[name="country"]'), data.country);
+      document.body.click();
+      await sleep(50);
+    }
+
+    if (data.state) {
+      const stateEl = pick('select[name="state"]') || pick('input[name="state"]') || pick('#state');
+      if (stateEl) {
+        if (looksLikeCombobox(stateEl)) {
+          await selectFromDropdown(stateEl, data.state);
+          document.body.click();
+          stateEl.dispatchEvent(new FocusEvent("blur", { bubbles: true }));
+          await sleep(200);
+        } else {
+          setNativeValue(stateEl, data.state);
+          await sleep(50);
+        }
+      }
+    }
+
+    if (data.district) {
+      const districtEl = pick('input[name="district"]');
+      if (districtEl && !districtEl.readOnly) {
+        setNativeValue(districtEl, data.district);
+        await sleep(50);
+      } else if (districtEl) {
+        document.body.click();
+        await sleep(100);
+        let matched = false;
+        for (let attempt = 0; attempt < 4 && !matched; attempt++) {
+          if (attempt > 0) await sleep(150);
+          const container = districtEl.closest('div[style*="position"]') || districtEl.parentElement?.parentElement || districtEl.parentElement;
+          districtEl.click();
+          districtEl.focus();
+          districtEl.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, cancelable: true, view: window }));
+          await sleep(50);
+          districtEl.dispatchEvent(new PointerEvent("pointerup", { bubbles: true, cancelable: true, view: window }));
+          await sleep(100);
+
+          let found = false;
+          let items = [];
+          for (let i = 0; i < 10; i++) {
+            items = Array.from(
+              (container || document).querySelectorAll(
+                '[class*="floatingDropdown_listItem"], [class*="dropdown_scroll"] li, ul[style*="list-style-type: none"] li'
+              )
+            );
+            if (items.length === 0 && container) {
+              const parent = container.parentElement;
+              if (parent) {
+                items = Array.from(
+                  parent.querySelectorAll(
+                    '[class*="floatingDropdown_listItem"], [class*="dropdown_scroll"] li, ul[style*="list-style-type: none"] li'
+                  )
+                );
+              }
+            }
+            if (items.length > 0) {
+              found = true;
+              break;
+            }
+            await sleep(100);
+          }
+          if (!found) {
+            document.body.click();
+            await sleep(100);
+            continue;
+          }
+          const target = norm(data.district);
+          let match = items.find((it) => {
+            const text = it.innerText?.trim();
+            return text && norm(text) === target;
+          });
+          if (!match) {
+            match = items.find((it) => {
+              const text = norm(it.innerText?.trim() || "");
+              return text.startsWith(target) || target.startsWith(text);
+            });
+          }
+          if (!match) {
+            const stripSuffix = (s) => s.replace(/\s*(urban|rural|north|south|east|west)$/i, "").trim();
+            const targetStripped = norm(stripSuffix(data.district));
+            match = items.find((it) => {
+              const text = norm(stripSuffix(it.innerText?.trim() || ""));
+              return text.includes(targetStripped) || targetStripped.includes(text);
+            });
+          }
+          if (match) {
+            match.scrollIntoView?.({ block: "nearest" });
+            match.click();
+            await sleep(100);
+            matched = districtEl.value && districtEl.value.trim().length > 0;
+          }
+          document.body.click();
+          await sleep(50);
+        }
+        await sleep(50);
+      }
+    }
+
+    setByName("city", data.city) || setByName("cityOrVillage", data.city);
+
+    if (data.qualification) {
+      const el = findByNameOrLabel("qualification", "Qualification Category") || findByNameOrLabel("qualificationCategory", "Qualification");
+      if (el && (await selectFromDropdown(el, data.qualification))) await sleep(600);
+    }
+    if (data.specQualification) {
+      const el = findByNameOrLabel("specQualification", "Specific Qualification") || findByNameOrLabel("specificQualification", "Qualification");
+      if (el) {
+        await selectFromDropdown(el, data.specQualification);
+        await sleep(150);
+      }
+    }
+    setByName("uniName", data.uniName);
+    if (data.yearOfGraduation) {
+      const el = findByNameOrLabel("yearOfGraduation", "Year of Graduation") || findByNameOrLabel("graduationYear", "Year");
+      if (el) {
+        await selectFromDropdown(el, data.yearOfGraduation);
+        await sleep(100);
+      }
+    }
+    setByName("eduSpecialization", data.eduSpecialization);
+    if (data.employmentStatus) {
+      const el = findByNameOrLabel("employmentStatus", "Employment Status") || findByNameOrLabel("employmentStatus", "Occupation Status");
+      if (el) {
+        await selectFromDropdown(el, data.employmentStatus);
+        await sleep(150);
+      }
+    }
+    if (data.employmentSector) {
+      const el = findByNameOrLabel("employmentSector", "Employment Sector") || findByNameOrLabel("sector", "Sector");
+      if (el) {
+        await selectFromDropdown(el, data.employmentSector);
+        await sleep(100);
+      }
+    }
+    if (data.professionalCategory) {
+      const el = findByNameOrLabel("professionalCategory", "Profession") || findByNameOrLabel("profession", "Professional Category");
+      if (el && (await selectFromDropdown(el, data.professionalCategory))) await sleep(300);
+    }
+    if (data.specProfession) {
+      const el = findByNameOrLabel("specProfession", "Profession Role") || findByNameOrLabel("professionRole", "Role");
+      if (el) {
+        await selectFromDropdown(el, data.specProfession);
+        await sleep(100);
+      }
+    }
+    setByName("profYearsOfExp", data.profYearsOfExp);
+    checkRadioGroupByValue("previouslyVolunteered", data.previouslyVolunteered);
+    if (data.previouslyVolunteered === "true") {
+      await sleep(150);
+      setByName("noOfParticipation", data.noOfParticipation);
+      setByName("lastTwoSevaPeriods", data.lastTwoSevaPeriods);
+      setByName("religiousInstitute", data.religiousInstitute);
+      setByName("volunteeredExp", data.volunteeredExp);
+    }
+
+    if (data.experiencedTrainer !== undefined) {
+      checkRadioGroupByValue("experiencedTrainer", data.experiencedTrainer);
+      if (data.experiencedTrainer === "true") {
+        await sleep(150);
+        const inst = findByNameOrLabel("trainerInstituteName", "Organization / Institute Name");
+        if (inst) setNativeValue(inst, data.trainerInstituteName);
+        const role = findByNameOrLabel("trainerRole", "Your Role as Trainer");
+        if (role) setNativeValue(role, data.trainerRole);
+        const exp = findByNameOrLabel("trainerExp", "Experience");
+        if (exp) setNativeValue(exp, data.trainerExp);
+
+        if (data.areaOfTrainerExp && data.areaOfTrainerExp.length > 0) {
+          const trigger = document.querySelector('input[name="areaOfTrainerExp"]');
+          if (trigger) {
+            trigger.click();
+            await sleep(150);
+            if (!document.querySelector('[class*="checkboxListItem"]') && pageOp(trigger, "click")) await sleep(150);
+            const options = document.querySelectorAll('[class*="checkboxListItem"], .floatingDropdown_checkboxListItem__AJXt6');
+            for (const opt of options) {
+              const label = opt.textContent?.trim();
+              const isMatch = data.areaOfTrainerExp.some((wanted) => {
+                const a = norm(wanted);
+                const b = norm(label);
+                return a === b || (a.includes("other") && b.includes("other") && b.includes("specify"));
+              });
+              if (isMatch) {
+                const cb = opt.querySelector('input[type="checkbox"]');
+                if (cb && !cb.checked) {
+                  clickCheckbox(cb);
+                  await sleep(100);
                 }
-                #${e} {
-                    position: relative;
-                    width: 60px;
-                    height: 60px;
-                    border: 2px solid rgba(212, 175, 55, .65);
-                    border-radius: 50%;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0;
-                    background: #33363B;
-                    color: #fff;
-                    font-family: system-ui, -apple-system, sans-serif;
-                    box-shadow: 0 10px 28px rgba(0, 0, 0, .45), 0 0 0 5px rgba(212, 175, 55, .12), inset 0 2px 6px rgba(255, 255, 255, .08);
-                    opacity: 1;
-                    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-                }
-                #${e}.ttdaf-anim-in {
-                    animation: ttdaf-in .25s ease-out;
-                }
-                #${e}:hover, #${e}:focus-visible {
-                    transform: scale(1.09);
-                    box-shadow: 0 14px 40px rgba(0, 0, 0, .55), 0 0 0 6px rgba(212, 175, 55, .22), 0 0 24px rgba(212, 175, 55, .35);
-                    outline: none;
-                }
-                #${e}:active { transform: scale(.96); }
-                #${e}.ttdaf-busy { pointer-events: none; filter: saturate(.75) brightness(.95); }
-                #${e}.ttdaf-locked { border-color: rgba(250, 204, 21, .75); }
-                #${e}.ttdaf-busy .ttdaf-icon { display: none; }
-                #${e}.ttdaf-busy::after {
-                    content: '';
-                    width: 22px;
-                    height: 22px;
-                    border: 3px solid rgba(255, 255, 255, .35);
-                    border-top-color: #fff;
-                    border-radius: 50%;
-                    animation: ttdaf-spin .7s linear infinite;
-                }
-                #${e} .ttdaf-icon { display: flex; line-height: 1; }
-                #${e} .ttdaf-icon img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-                #${e} .ttdaf-kbd {
-                    position: absolute;
-                    right: -3px;
-                    bottom: -3px;
-                    background: #E3B93D;
-                    color: #3A2A08;
-                    font-size: 9px;
-                    font-weight: 800;
-                    letter-spacing: .02em;
-                    padding: 2px 6px;
-                    border-radius: 999px;
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
-                }
-                #${e} .ttdaf-lock {
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    font-size: 17px;
-                    line-height: 1;
-                    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .55));
-                }
-                #ttdaf-fab-wrap .ttdaf-pop {
-                    position: absolute;
-                    right: 74px;
-                    bottom: 0;
-                    transform: translateX(12px);
-                    width: max-content;
-                    max-width: 260px;
-                    background: rgba(24, 24, 27, .97);
-                    border: 1px solid rgba(255, 255, 255, .09);
-                    border-radius: 14px;
-                    padding: 12px 14px;
-                    color: #fff;
-                    opacity: 0;
-                    visibility: hidden;
-                    pointer-events: none;
-                    transition: opacity .18s ease, transform .18s ease, visibility .18s;
-                    box-shadow: 0 18px 50px rgba(0, 0, 0, .5);
-                    text-align: left;
-                }
-                #ttdaf-fab-wrap .ttdaf-pop.ttdaf-pop-hidden {
-                    display: none;
-                }
-                #ttdaf-fab-wrap .ttdaf-pop::after {
-                    content: '';
-                    position: absolute;
-                    right: -5px;
-                    bottom: 30px;
-                    width: 10px;
-                    height: 10px;
-                    background: rgba(24, 24, 27, .97);
-                    transform: rotate(45deg);
-                    border-right: 1px solid rgba(255, 255, 255, .09);
-                    border-top: 1px solid rgba(255, 255, 255, .09);
-                    border-radius: 2px;
-                }
-                #ttdaf-fab-wrap:hover .ttdaf-pop,
-                #ttdaf-fab-wrap:focus-within .ttdaf-pop {
-                    opacity: 1;
-                    visibility: visible;
-                    pointer-events: auto;
-                    transform: translateX(0);
-                }
-                #ttdaf-fab-wrap .ttdaf-pop-title { font-size: 12.5px; font-weight: 700; line-height: 1.3; margin-bottom: 7px; }
-                #ttdaf-fab-wrap .ttdaf-pop-kbd-row {
-                    display: flex;
-                    align-items: center;
-                    gap: 7px;
-                    font-size: 10.5px;
-                    opacity: .75;
-                }
-                #ttdaf-fab-wrap .ttdaf-pop-link {
-                    display: inline-block;
-                    margin-top: 7px;
-                    color: #FDE68A;
-                    font-size: 11.5px;
-                    font-weight: 800;
-                    text-decoration: none;
-                }
-                #ttdaf-fab-wrap .ttdaf-pop-link:hover { text-decoration: underline; }
-                #ttdaf-fab-wrap kbd {
-                    background: rgba(255, 255, 255, .12);
-                    border: 1px solid rgba(255, 255, 255, .18);
-                    border-bottom-width: 2px;
-                    border-radius: 6px;
-                    padding: 2px 6px;
-                    font: 700 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
-                    color: #fff;
-                }
-                @media (max-width: 480px) {
-                    #ttdaf-fab-wrap .ttdaf-pop {
-                        right: 0;
-                        top: auto;
-                        bottom: 72px;
-                        transform: translateY(12px);
-                    }
-                    #ttdaf-fab-wrap:hover .ttdaf-pop,
-                    #ttdaf-fab-wrap:focus-within .ttdaf-pop { transform: translateY(0); }
-                    #ttdaf-fab-wrap .ttdaf-pop::after { display: none; }
-                }
-                @keyframes ttdaf-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-                @keyframes ttdaf-spin { to { transform: rotate(360deg); } }
-                @keyframes ttdaf-toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-            `,document.head.appendChild(w)}const l=document.createElement("div");l.id="ttdaf-fab-wrap";const u=document.createElement("button");u.id=e,u.type="button",u.addEventListener("click",q),l.appendChild(u);const h=document.createElement("div");h.className="ttdaf-pop",h.setAttribute("role","dialog"),l.appendChild(h),document.body.appendChild(l),N||(u.classList.add("ttdaf-anim-in"),N=!0),await k(u,l)}let N=!1;function t(){const r=document.getElementById("ttdaf-fab-wrap");r&&r.remove();const l=document.getElementById(s);l&&l.remove()}async function n(){if(!d()){t();return}const r=await T(),l=C();if(r){const u=document.getElementById(e);if(u){if(!u.classList.contains("ttdaf-locked"))return;await k(u,document.getElementById("ttdaf-fab-wrap"));return}l&&await O();return}t()}window.addEventListener("keydown",r=>{if(r.altKey&&!r.ctrlKey&&!r.metaKey&&!r.shiftKey&&r.code==="KeyA"){if(!d()||!C())return;r.preventDefault(),q()}}),document.readyState==="loading"?document.addEventListener("DOMContentLoaded",n):n();let o;const c=new MutationObserver(()=>{clearTimeout(o),o=setTimeout(n,600)});document.body&&c.observe(document.body,{childList:!0,subtree:!0})})();
-})()
+              }
+            }
+            document.body.click();
+            await sleep(100);
+          }
+        }
+        if (
+          data.areaOfTrainerExp?.some((a) => a.toLowerCase().includes("other") && a.toLowerCase().includes("specify")) &&
+          data.otherAreaOfTrainerExp
+        ) {
+          await sleep(150);
+          const el = findByNameOrLabel("otherAreaOfTrainerExp", "Other Area of Training Expertise");
+          if (el) setNativeValue(el, data.otherAreaOfTrainerExp);
+        }
+      }
+    }
+
+    if (data.preferredLoc) {
+      await selectFromDropdown(document.querySelector('input[name="preferredLoc"]'), data.preferredLoc);
+      await sleep(150);
+    }
+    if (data.timeCommitment) {
+      await selectFromDropdown(document.querySelector('input[name="timeCommitment"]'), data.timeCommitment);
+      await sleep(150);
+    }
+    if (data.freq) {
+      await selectFromDropdown(document.querySelector('input[name="freq"]'), data.freq);
+      await sleep(150);
+    }
+    if (data.preferredLoc === "Other(Specify)" && data.otherPreferredLoc) {
+      await sleep(150);
+      setByName("otherPreferredLoc", data.otherPreferredLoc);
+    }
+
+    setByName("firstRefName", data.firstRefName);
+    setByName("firstRefDetails", data.firstRefDetails);
+    setByName("firstRefMobileNo", data.firstRefMobileNo);
+    setByName("secRefName", data.secRefName);
+    setByName("secRefDetails", data.secRefDetails);
+    setByName("secRefMobileNo", data.secRefMobileNo);
+
+    if (data.languages && Array.isArray(data.languages) && data.languages.length > 0) {
+      const trigger = document.querySelector('input[name="languages"]');
+      if (trigger) {
+        trigger.click();
+        trigger.focus();
+        await sleep(200);
+        if (!document.querySelector('[class*="checkboxListItem"]') && pageOp(trigger, "click")) await sleep(200);
+        for (const lang of data.languages) {
+          const options = document.querySelectorAll('[class*="checkboxListItem"], li');
+          for (const opt of options) {
+            if (opt.textContent?.trim() === lang) {
+              const cb = opt.querySelector('input[type="checkbox"]');
+              if (cb && !cb.checked) {
+                clickCheckbox(cb);
+                await sleep(100);
+              }
+              break;
+            }
+          }
+        }
+        document.body.click();
+        await sleep(100);
+      }
+    }
+
+    if (data.photo && data.photo.data) {
+      const containers = Array.from(
+        scope.querySelectorAll('[class*="profile_photo-container"], [class*="photo-container"], [class*="photo-upload-container"]')
+      );
+      const container =
+        containers
+          .slice()
+          .reverse()
+          .find((c) => {
+            const rect = c.getBoundingClientRect();
+            return c.offsetParent !== null && rect.width > 0 && rect.height > 0;
+          }) || containers[containers.length - 1];
+      if (container) {
+        const fileInput = container.parentElement?.querySelector('input[type="file"]') || container.nextElementSibling;
+        if (fileInput && fileInput.type === "file") await setFileInput(fileInput, data.photo);
+        else {
+          const candidates = Array.from(scope.querySelectorAll('input[type="file"][accept*="jpeg"]'));
+          const picked =
+            candidates
+              .slice()
+              .reverse()
+              .find((c) => {
+                const rect = c.getBoundingClientRect();
+                return c.offsetParent !== null || rect.width > 0;
+              }) || candidates[candidates.length - 1];
+          if (picked) await setFileInput(picked, data.photo);
+        }
+      }
+      await sleep(250);
+    }
+
+    if (data.document && data.document.data) {
+      const labels = document.querySelectorAll("label");
+      let input = null;
+      for (const label of labels) {
+        if (label.textContent?.includes("Upload ID Proof")) {
+          input = (label.closest('div[style*="position: relative"]') || label.closest("div"))?.querySelector('input[type="file"]');
+          break;
+        }
+      }
+      if (input) await setFileInput(input, data.document);
+      else {
+        const candidates = document.querySelectorAll('input[type="file"][accept*="jpeg"]');
+        if (candidates.length > 1) await setFileInput(candidates[1], data.document);
+      }
+      await sleep(250);
+    }
+
+    if (data.eduCertificate && data.eduCertificate.data) {
+      const labels = document.querySelectorAll("label");
+      let input = null;
+      for (const label of labels) {
+        if (label.textContent?.includes("Upload Educational Certificate")) {
+          input = (label.closest('div[style*="position: relative"]') || label.closest("div"))?.querySelector('input[type="file"]');
+          break;
+        }
+      }
+      if (input) await setFileInput(input, data.eduCertificate);
+      else {
+        const candidates = document.querySelectorAll('input[type="file"][accept*="jpeg"]');
+        if (candidates.length > 2) await setFileInput(candidates[2], data.eduCertificate);
+      }
+      await sleep(250);
+    }
+
+    setByName("sevakName", data.sevakName);
+    setByName("surName", data.surName);
+    setByName("fatherOrSpouseName", data.fatherOrSpouseName);
+
+    if (data.bloodGroup) {
+      const el = pick('input[name="bloodGroup"]');
+      if (el) {
+        await selectFromDropdown(el, data.bloodGroup);
+        await sleep(200);
+      }
+    }
+
+    if (data.mentallyFit || data.physicallyFit) {
+      let root = scope;
+      if (!root || !root.querySelectorAll) root = document;
+      const groups = Array.from(root.querySelectorAll('#fitness, [id*="fitness"]'));
+      let group;
+      if (groups.length > 0) {
+        group =
+          groups
+            .slice()
+            .reverse()
+            .find((g) => {
+              const rect = g.getBoundingClientRect();
+              return g.offsetParent !== null && rect.width > 0 && rect.height > 0;
+            }) || groups[groups.length - 1];
+      } else {
+        group = Array.from(root.querySelectorAll('div[class*="radioGroup"], .profile_radioGroup__RkVE_')).find((g) =>
+          g.textContent.includes("Mentally Fit")
+        );
+      }
+      if (group) {
+        const checkboxes = Array.from(group.querySelectorAll('input[type="checkbox"][name="fitness"]'));
+        for (const cb of checkboxes) {
+          const label = cb.closest("label")?.textContent?.toLowerCase() || "";
+          let shouldCheck = false;
+          if (data.mentallyFit && label.includes("mentally") && !cb.checked) shouldCheck = true;
+          if (data.physicallyFit && label.includes("physically") && !cb.checked) shouldCheck = true;
+          if (shouldCheck) {
+            const propsKey = Object.keys(cb).find((k) => k.startsWith("__reactProps$"));
+            let handled = false;
+            if (propsKey && cb[propsKey]?.onChange) {
+              try {
+                cb[propsKey].onChange({
+                  target: { checked: true, type: "checkbox", name: "fitness" },
+                  currentTarget: { checked: true, type: "checkbox", name: "fitness" },
+                  preventDefault: () => {},
+                  stopPropagation: () => {},
+                  persist: () => {},
+                  nativeEvent: new Event("change"),
+                });
+                handled = true;
+              } catch {}
+            }
+            if (!handled || !cb.checked) cb.click();
+            await sleep(150);
+          }
+        }
+      }
+    }
+
+    setByName("street", data.street);
+    setByName("doorNo", data.doorNo);
+    if (data.nearestTtdTemple) {
+      const el = pick('input[name="nearestTtdTemple"]');
+      if (el) {
+        await selectFromDropdown(el, data.nearestTtdTemple);
+        await sleep(200);
+      }
+    }
+    setByName("qualification", data.volunteerQualification);
+    setByName("profession", data.volunteerProfession);
+    setByName("employeeId", data.employeeId);
+    setByName("designation", data.designation);
+    setByName("specialisation", data.specialisation);
+    setByName("placeOfWork", data.placeOfWork);
+
+    const forceSetValue = async (el, value) => {
+      if (!el) return false;
+      const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+      if (setter) setter.call(el, value);
+      else el.value = value;
+      const propsKey = Object.keys(el).find((k) => k.startsWith("__reactProps$"));
+      if (propsKey) {
+        const props = el[propsKey];
+        if (props && props.onChange) {
+          try {
+            props.onChange({
+              target: { value },
+              currentTarget: { value },
+              preventDefault: () => {},
+              stopPropagation: () => {},
+              persist: () => {},
+              nativeEvent: new Event("change"),
+            });
+          } catch {}
+        }
+      }
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+      el.dispatchEvent(new FocusEvent("blur", { bubbles: true }));
+      await sleep(50);
+      return el.value === value;
+    };
+
+    for (let attempt = 1; attempt <= 3 && data.professionalCategory; attempt++) {
+      const el = findByNameOrLabel("professionalCategory", "Profession") || findByNameOrLabel("profession", "Professional Category");
+      if (el && (!el.value || el.value.trim() === "")) {
+        await selectFromDropdown(el, data.professionalCategory);
+        await sleep(250);
+        if (!el.value || el.value.trim() === "") await forceSetValue(el, data.professionalCategory);
+        await sleep(200);
+        if (data.specProfession) {
+          const roleEl = findByNameOrLabel("specProfession", "Profession Role") || findByNameOrLabel("professionRole", "Role");
+          if (roleEl && (!roleEl.value || roleEl.value.trim() === "")) {
+            await selectFromDropdown(roleEl, data.specProfession);
+            await sleep(150);
+            if (!roleEl.value || roleEl.value.trim() === "") await forceSetValue(roleEl, data.specProfession);
+          }
+        }
+      } else if (el && el.value) {
+        if (data.specProfession) {
+          const roleEl = findByNameOrLabel("specProfession", "Profession Role") || findByNameOrLabel("professionRole", "Role");
+          if (roleEl && (!roleEl.value || roleEl.value.trim() === "")) {
+            await selectFromDropdown(roleEl, data.specProfession);
+            await sleep(150);
+            if (!roleEl.value || roleEl.value.trim() === "") await forceSetValue(roleEl, data.specProfession);
+          } else break;
+        } else break;
+      } else break;
+    }
+
+    const idTypeFinal = (data.idType || "Aadhaar Card").trim();
+    if (!idTypeFinal.toLowerCase().includes("aadhaar")) {
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        const el = pick("#idType") || pick('input[name="idType"]') || pick('input[name="photoIdType"]') || pick('input[name="spvrIdType"]');
+        if (el && (!el.value || el.value.trim() === "")) {
+          await selectFromDropdown(el, idTypeFinal);
+          await sleep(200);
+          if (!el.value || el.value.trim() === "") await forceSetValue(el, idTypeFinal);
+          await sleep(100);
+          if (data.idNumber) setByName("idNumber", data.idNumber);
+          if (el.value && el.value.trim() !== "") break;
+        } else break;
+      }
+    }
+    if (data.idNumber) {
+      const el = pick('input[name="idNumber"]');
+      if (el && (!el.value || el.value.trim() === "")) setByName("idNumber", data.idNumber);
+    }
+
+    if (data.professionalCategory) {
+      const el = findByNameOrLabel("professionalCategory", "Profession") || findByNameOrLabel("profession", "Professional Category");
+      if (el) {
+        await forceSetValue(el, data.professionalCategory);
+        await sleep(200);
+      }
+    }
+    if (data.specProfession) {
+      const el = findByNameOrLabel("specProfession", "Profession Role") || findByNameOrLabel("professionRole", "Role");
+      if (el) {
+        await forceSetValue(el, data.specProfession);
+        await sleep(100);
+      }
+    }
+
+    const isAadhaarFinal = idTypeFinal.toLowerCase().includes("aadhaar");
+    const idTypeElFinal = pick("#idType") || pick('input[name="idType"]') || pick('input[name="photoIdType"]') || pick('input[name="spvrIdType"]');
+    if (!isAadhaarFinal && idTypeElFinal && (!idTypeElFinal.value || idTypeElFinal.value.trim() === "")) {
+      await forceSetValue(idTypeElFinal, idTypeFinal);
+      if (idTypeElFinal.closest(".MuiFormControl-root") || idTypeElFinal.closest(".form-group") || idTypeElFinal.parentElement?.parentElement) {
+        if (!document.querySelector('[role="listbox"]') && !document.querySelector(".MuiAutocomplete-listbox")) {
+          idTypeElFinal.focus();
+          idTypeElFinal.click();
+          await sleep(100);
+        }
+        const options = document.querySelectorAll('[role="option"], li[data-option-index]');
+        for (const opt of options) {
+          if (opt.textContent.toLowerCase().includes(idTypeFinal.toLowerCase())) {
+            opt.click();
+            break;
+          }
+        }
+      }
+      await sleep(100);
+    }
+    if (data.idNumber) {
+      const el = pick('input[name="idNumber"]');
+      if (el && (!el.value || el.value.trim() === "")) setByName("idNumber", data.idNumber);
+    }
+
+    if (data.clickSaveAndAdd !== false) {
+      await sleep(400);
+      const saveBtn = Array.from(document.querySelectorAll("button")).find(
+        (b) => b.textContent?.trim().includes("Save and Add Sevak") && !b.disabled
+      );
+      if (saveBtn) {
+        saveBtn.click();
+        for (let i = 0; i < 30; i++) {
+          await sleep(50);
+          const dialogs = document.querySelectorAll('[role="dialog"]');
+          for (const dialog of dialogs) {
+            const text = dialog.textContent || "";
+            if (text.toLowerCase().includes("validation") || text.toLowerCase().includes("alert")) {
+              const subtitle = dialog.querySelector('[class*="subTitle"]');
+              const message = subtitle ? subtitle.textContent.trim() : "Backend validation failed";
+              const retryBtn = Array.from(dialog.querySelectorAll("button")).find((b) => b.textContent?.includes("Retry"));
+              const closeIcon = dialog.querySelector('img[src*="cross"]');
+              if (retryBtn) retryBtn.click();
+              else if (closeIcon) closeIcon.click();
+              throw new Error(`Validation Modal Error: ${message}`);
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // ---- Floating action button injected on supported TTD pages ----
+  (function () {
+    const BTN_ID = "ttdfh-fill-button";
+    const STYLE_ID = BTN_ID + "-style";
+    let busy = false;
+
+    // Detect which TTD booking form is on the page so the button can fill the
+    // right one automatically (no need to open the popup first).
+    function detectFormType() {
+      if (document.querySelector('input[name="fName0"], input[name="fName1"]')) return "srivani";
+      if (document.querySelector('input[name="sevakName"], input[name="spvrName"], [class*="sevakContainer"]')) return "seva";
+      // Senior Citizen pilgrim-details step: same pilgrim rows, plus the age-proof upload.
+      if (isSeniorPage() && document.querySelector('input[name="name"], input[name="fname"], input[type="file"]')) return "senior";
+      if (document.querySelector('input[name="name"], input[name="fname"]')) return "pilgrim";
+      return null;
+    }
+    function hasBookingForm() {
+      return detectFormType() !== null;
+    }
+    const FORM_LABELS = {
+      pilgrim: "Fill Pilgrims",
+      seva: "Fill Sevak",
+      srivani: "Fill Srivani",
+      senior: "Fill Senior Citizen",
+    };
+    function formLabel(type) {
+      return FORM_LABELS[type] || "Fill Details";
+    }
+
+    // Delegates to the shared on-page toast (also announces to screen readers).
+    function showToast(message, kind) {
+      toast(message, kind);
+    }
+
+    const isEncryptedValue = (v) => !!v && typeof v === "object" && v.__tfhEnc === 1 && v.iv && v.ct;
+
+    // Reads saved pilgrims. Normally that's a direct storage read; when the user
+    // has switched on at-rest encryption the data is ciphertext here, so we ask
+    // the extension's background worker (which can reach the session key) to
+    // hand back the decrypted copy.
+    async function loadSavedData() {
+      const stored = await chrome.storage.local.get(["pilgrims", "contact", "ttd_devotees", "ttd_settings"]);
+      if (!stored.pilgrims || !Array.isArray(stored.pilgrims) || stored.pilgrims.length === 0) {
+        if (stored.ttd_devotees && Array.isArray(stored.ttd_devotees)) {
+          stored.pilgrims = stored.ttd_devotees.map((d, i) => ({
+            id: d.id || Date.now() + i,
+            name: d.name,
+            age: d.age,
+            gender: d.gender,
+            idProof: d.idProof || d.idType || "Aadhaar Card",
+            idNumber: d.idNumber
+          }));
+        }
+      }
+      if (!isEncryptedValue(stored.pilgrims) && !isEncryptedValue(stored.contact)) return stored;
+
+      const response = await new Promise((resolve) => {
+        try {
+          chrome.runtime.sendMessage({ type: "TFH_SECURE_GET", keys: ["pilgrims", "contact"] }, (r) => {
+            if (chrome.runtime.lastError) resolve(null);
+            else resolve(r);
+          });
+        } catch {
+          resolve(null);
+        }
+      });
+      if (!response || !response.ok) {
+        const err = new Error(response && response.error === "VAULT_LOCKED" ? "VAULT_LOCKED" : "READ_FAILED");
+        throw err;
+      }
+      return response.data || {};
+    }
+
+    function setBusy(on) {
+      busy = on;
+      const btn = document.getElementById(BTN_ID);
+      if (btn) btn.classList.toggle("ttdfh-busy", on);
+      if (!on) setProgress("");
+    }
+
+    function setProgress(text) {
+      const el = document.getElementById("ttdfh-progress");
+      if (!el) return;
+      el.textContent = text || "";
+      el.style.display = text ? "block" : "none";
+    }
+
+    // Reads a plaintext storage key for the on-page button. Seva/Srivani data
+    // can't be decrypted here when at-rest encryption is on (only pilgrims and
+    // contact can, via the background worker), so an encrypted blob returns a
+    // locked signal and the user is pointed at the popup.
+    async function loadPlainKey(key) {
+      const stored = await chrome.storage.local.get([key]);
+      const value = stored[key];
+      if (isEncryptedValue(value)) return { locked: true };
+      return { value };
+    }
+
+    function handleFillError(err) {
+      const message = (err && err.message) || "";
+      if (message === "VAULT_LOCKED") {
+        showToast("🔒 Your data is locked — open TTD Form Helper and unlock it first.", "warn");
+      } else if (/extension context invalidated/i.test(message) || !chrome.runtime?.id) {
+        removeButton();
+        showToast("Extension was reloaded — refresh this TTD page to use autofill.", "warn");
+      } else {
+        showToast(message || "Fill failed — try reloading the TTD page.", "error");
+      }
+    }
+
+    function scrollToFirstEmpty(selector) {
+      try {
+        const first = Array.from(document.querySelectorAll(selector)).find(
+          (el) => isOnScreen(el) && (!el.value || !el.value.trim())
+        );
+        if (first) first.scrollIntoView({ block: "center", behavior: prefersReducedMotion() ? "auto" : "smooth" });
+      } catch {}
+    }
+
+    // Wraps a fill action with the shared lock, the busy state, and (by default)
+    // a fresh undo log so "Clear filled fields" can revert exactly this run.
+    async function runGuarded(fn, { log = true, qc = log } = {}) {
+      if (busy) return;
+      if (globalFilling) {
+        showToast("A fill is already running — please wait.", "warn");
+        return;
+      }
+      setBusy(true);
+      globalFilling = true;
+      if (log) beginLog();
+      try {
+        await fn();
+        if (qc) runFieldQC();
+      } catch (err) {
+        handleFillError(err);
+      } finally {
+        globalFilling = false;
+        setBusy(false);
+      }
+    }
+
+    async function runPilgrimFill(opts = {}) {
+      const { overwrite = false, thenContinue = false } = opts;
+      const stored = await loadSavedData();
+      const pilgrims = stored.pilgrims || [];
+      const contact = stored.contact || {};
+      if (!pilgrims.length) {
+        showToast("No pilgrims saved — open the extension to add them.", "warn");
+        return;
+      }
+      const result = await fillAllPilgrims(pilgrims, contact, {
+        overwrite,
+        onProgress: (done, total) => setProgress(done + "/" + total + " pilgrims…"),
+      });
+      if (result.status !== "success") {
+        showToast(result.message || "Could not fill this page.", "error");
+        return;
+      }
+      showToast((overwrite ? "♻️ Re-filled " : "⚡ Filled ") + result.filled + " pilgrim" + (result.filled === 1 ? "" : "s") + ".", "success");
+      if (thenContinue) await clickContinueGeneric();
+      else scrollToFirstEmpty('input[name="name"], input[name="fname"]');
+    }
+
+    // Fills the next still-empty pilgrim row with the next saved pilgrim who
+    // isn't on the page yet. It used to always reach for pilgrims[0], so
+    // clicking it twice just refilled the same person into another row.
+    async function runSinglePilgrim() {
+      const stored = await loadSavedData();
+      const pilgrims = stored.pilgrims || [];
+      const contact = resolveEffectiveContact(stored.contact || {}, pilgrims);
+      if (!pilgrims.length) {
+        showToast("No pilgrims saved — open the extension to add them.", "warn");
+        return;
+      }
+      const result = await fillNextPilgrim(pilgrims, contact);
+      if (result.status === "error") {
+        showToast(result.message, "error");
+        return;
+      }
+      if (result.status === "noop") {
+        showToast(result.message, "warn");
+        return;
+      }
+      showToast("① Filled " + (result.name || "the next pilgrim") + " into row " + (result.slot + 1) + ".", "success");
+    }
+
+    async function runContactOnly() {
+      const stored = await loadSavedData();
+      await fillContact(resolveEffectiveContact(stored.contact || {}, stored.pilgrims || []));
+      showToast("✉️ Contact details filled.", "success");
+    }
+
+    // Reads saved sets + the pilgrim vault directly (only possible when at-rest
+    // encryption is off — those keys aren't handed to content scripts otherwise).
+    async function readSetsAndVault() {
+      const stored = await chrome.storage.local.get(["pilgrimSets", "pilgrimVault"]);
+      if (isEncryptedValue(stored.pilgrimSets) || isEncryptedValue(stored.pilgrimVault)) return { locked: true };
+      return {
+        sets: Array.isArray(stored.pilgrimSets) ? stored.pilgrimSets : [],
+        vault: Array.isArray(stored.pilgrimVault) ? stored.pilgrimVault : [],
+      };
+    }
+
+    async function runFillFromSet(setId, overwrite) {
+      const { sets, vault, locked } = await readSetsAndVault();
+      if (locked) {
+        showToast("🔒 Saved sets are locked — open the extension popup to use them.", "warn");
+        return;
+      }
+      const set = (sets || []).find((s) => s.id === setId);
+      if (!set) {
+        showToast("That set no longer exists.", "warn");
+        return;
+      }
+      const members = (set.pilgrimIds || [])
+        .map((id) => (vault || []).find((v) => v.id === id))
+        .filter(Boolean)
+        .slice(0, 6);
+      if (!members.length) {
+        showToast("That set has no pilgrims.", "warn");
+        return;
+      }
+      try {
+        await chrome.storage.local.set({ lastUsedSet: setId });
+      } catch {}
+      const stored = await loadSavedData();
+      const result = await fillAllPilgrims(members, stored.contact || {}, {
+        overwrite: !!overwrite,
+        onProgress: (done, total) => setProgress(done + "/" + total + " pilgrims…"),
+      });
+      showToast("Filled " + result.filled + " from “" + (set.name || "set") + "”.", "success");
+    }
+
+    async function runSrivaniFill(opts = {}) {
+      const { value, locked } = await loadPlainKey("srivaniPeople");
+      if (locked) {
+        showToast("🔒 Srivani data is locked — open the extension popup to fill it.", "warn");
+        return;
+      }
+      const members = Array.isArray(value) ? value.filter((p) => p && p.name && p.name.trim()) : [];
+      if (!members.length) {
+        showToast("No Srivani members saved — open the extension to add them.", "warn");
+        return;
+      }
+      const result = await fillSrivaniMembers(members);
+      showToast("🪔 Filled " + result.filled + " Srivani member" + (result.filled === 1 ? "" : "s") + ".", "success");
+      if (opts.thenContinue) await clickContinueGeneric();
+    }
+
+    // The age proof is personal data, so with at-rest encryption on it is
+    // ciphertext here and has to come through the background worker, like the
+    // pilgrims do.
+    async function loadSeniorProof() {
+      const stored = await chrome.storage.local.get(["seniorProof"]);
+      if (!isEncryptedValue(stored.seniorProof)) return stored.seniorProof || null;
+      const response = await new Promise((resolve) => {
+        try {
+          chrome.runtime.sendMessage({ type: "TFH_SECURE_GET", keys: ["seniorProof"] }, (r) => {
+            if (chrome.runtime.lastError) resolve(null);
+            else resolve(r);
+          });
+        } catch {
+          resolve(null);
+        }
+      });
+      if (!response || !response.ok) throw new Error(response && response.error === "VAULT_LOCKED" ? "VAULT_LOCKED" : "READ_FAILED");
+      return (response.data && response.data.seniorProof) || null;
+    }
+
+    async function runSeniorFill(opts = {}) {
+      const stored = await loadSavedData();
+      const pilgrims = stored.pilgrims || [];
+      if (!pilgrims.length) {
+        showToast("No pilgrims saved. Open the extension and add the senior citizen (and spouse) first.", "warn");
+        return;
+      }
+      const proof = await loadSeniorProof();
+      const result = await fillSeniorForm(pilgrims, stored.contact || {}, proof, {
+        overwrite: !!opts.overwrite,
+        onProgress: (done, total) => setProgress(done + "/" + total + " pilgrims…"),
+      });
+      if (result.status !== "success") {
+        showToast(result.message || "Could not fill this page.", "error");
+        return;
+      }
+      const notes = [
+        "👴 Filled " + result.filled + " pilgrim" + (result.filled === 1 ? "" : "s") + ".",
+        ...(result.warnings || []),
+        SENIOR_PROOF_TEXT[result.proofState],
+      ].filter(Boolean);
+      const clean = !(result.warnings || []).length && (result.proofState === "attached" || result.proofState === "none" || result.proofState === "no_input");
+      // Self-QC first: its own summary toast would otherwise replace this one,
+      // and the proof / age warnings are the part that must stay on screen.
+      runFieldQC();
+      showToast(notes.join(" "), clean ? "success" : "warn");
+      if (opts.thenContinue && result.proofState !== "failed" && result.proofState !== "missing") await clickContinueGeneric();
+    }
+
+    const sevakHasData = (m) => !!m && (m.sevakName || m.spvrName || m.mobileNo);
+    // A group booking page shows more than one sevak block at once.
+    const isGroupSevaPage = () => document.querySelectorAll('[class*="sevakContainer"]').length > 1;
+
+    // Group members live in a separate array key, filled per-member by index.
+    async function loadGroupMembers() {
+      const stored = await chrome.storage.local.get(["groupSevaData"]);
+      const raw = stored.groupSevaData;
+      if (isEncryptedValue(raw)) return { locked: true, members: [] };
+      const arr = Array.isArray(raw) ? raw : [];
+      const members = [];
+      arr.forEach((m, index) => {
+        if (sevakHasData(m)) members.push({ member: m, index });
+      });
+      return { members };
+    }
+
+    // Fills one sevak; a numeric memberIndex targets the matching group block.
+    async function fillSevaMember(data, memberIndex) {
+      const payload = { ...data, clickSaveAndAdd: false };
+      if (typeof memberIndex === "number") payload.memberIndex = memberIndex;
+      await fillSevaForm(payload);
+    }
+    async function fillSevaMemberReport(member, index) {
+      await fillSevaMember(member, index);
+      showToast("🙏 Filled member " + (index + 1) + " — review, then Save & Add Sevak.", "success");
+    }
+
+    async function runSevaFill() {
+      // On a group page, fill from the group array (per-member); otherwise the
+      // single-sevak profile. The menu lets the user pick a specific member.
+      if (isGroupSevaPage()) {
+        const { members, locked } = await loadGroupMembers();
+        if (locked) {
+          showToast("🔒 Group Seva data is locked — open the extension popup to fill it.", "warn");
+          return;
+        }
+        if (members.length) {
+          await fillSevaMember(members[0].member, members[0].index);
+          showToast("🙏 Filled member " + (members[0].index + 1) + " — use the ▾ menu to fill others.", "success");
+          return;
+        }
+        // No group members saved — fall through to the single-sevak profile.
+      }
+      const { value, locked } = await loadPlainKey("sevakData");
+      if (locked) {
+        showToast("🔒 Seva data is locked — open the extension popup to fill it.", "warn");
+        return;
+      }
+      if (!sevakHasData(value)) {
+        showToast("No Sevak details saved — open the extension to add them.", "warn");
+        return;
+      }
+      // One-click helper fills only; the user reviews and submits themselves.
+      await fillSevaMember(value);
+      showToast("🙏 Sevak details filled — review, then Save & Add Sevak.", "success");
+    }
+
+    // Default action: fill the detected form (pilgrims: only-empty unless overwrite).
+    function onFillClick(opts = {}) {
+      const type = detectFormType();
+      if (!type) {
+        showToast("Open a TTD booking form first.", "warn");
+        return;
+      }
+      runGuarded(() => {
+        if (type === "srivani") return runSrivaniFill();
+        if (type === "seva") return runSevaFill();
+        if (type === "senior") return runSeniorFill({ overwrite: !!opts.overwrite });
+        return runPilgrimFill({ overwrite: !!opts.overwrite });
+      }, { qc: type !== "senior" });
+    }
+
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || "") || /mac/i.test((navigator.userAgentData && navigator.userAgentData.platform) || "");
+    const shortcutLabel = isMac ? "⌥A" : "Alt+A";
+    const shortcutFull = isMac ? "Option + A" : "Alt + A";
+
+    function ensureStyles() {
+      if (document.getElementById(STYLE_ID)) return;
+      const style = document.createElement("style");
+      style.id = STYLE_ID;
+      style.textContent = `
+        #ttdfh-fab-wrap {
+          position: fixed;
+          right: 22px;
+          bottom: 22px;
+          z-index: 2147483646;
+          font-family: system-ui, -apple-system, sans-serif;
+        }
+        #${BTN_ID} {
+          position: relative;
+          width: 58px;
+          height: 58px;
+          border: 2px solid rgba(255, 255, 255, .55);
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          background: linear-gradient(160deg, #FFB03B 0%, #C42F3B 100%);
+          color: #fff;
+          box-shadow: 0 10px 28px rgba(196,47,59,.4), inset 0 2px 6px rgba(255,255,255,.25);
+          opacity: 1;
+          transition: transform .18s ease, box-shadow .18s ease;
+          animation: ttdfh-in .25s ease-out;
+        }
+        #${BTN_ID}:hover, #${BTN_ID}:focus-visible {
+          transform: scale(1.08);
+          box-shadow: 0 14px 36px rgba(196,47,59,.5), 0 0 0 6px rgba(255,176,59,.22);
+          outline: none;
+        }
+        #${BTN_ID}:active { transform: scale(.95); }
+        #${BTN_ID}.ttdfh-busy { pointer-events: none; filter: saturate(.75) brightness(.95); }
+        #${BTN_ID}.ttdfh-busy .ttdfh-icon { display: none; }
+        #${BTN_ID}.ttdfh-busy::after {
+          content: '';
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(255, 255, 255, .4);
+          border-top-color: #fff;
+          border-radius: 50%;
+          animation: ttdfh-spin .7s linear infinite;
+        }
+        #${BTN_ID} .ttdfh-icon { display: flex; line-height: 1; font-size: 24px; }
+        #${BTN_ID} .ttdfh-kbd {
+          position: absolute;
+          right: -3px;
+          bottom: -3px;
+          background: #1E9E5C;
+          color: #fff;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: .02em;
+          padding: 2px 6px;
+          border-radius: 999px;
+          box-shadow: 0 2px 8px rgba(0,0,0,.35);
+        }
+        #ttdfh-progress {
+          position: absolute;
+          right: 0;
+          bottom: 66px;
+          background: rgba(30, 20, 20, .97);
+          color: #fff;
+          font: 700 11px/1.3 system-ui, -apple-system, sans-serif;
+          padding: 5px 10px;
+          border-radius: 999px;
+          white-space: nowrap;
+          box-shadow: 0 8px 22px rgba(0,0,0,.4);
+        }
+        #ttdfh-caret {
+          position: absolute;
+          top: -6px;
+          right: -6px;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          border: 1px solid rgba(255,255,255,.55);
+          background: #1E9E5C;
+          color: #fff;
+          font: 700 12px/1 system-ui, sans-serif;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          box-shadow: 0 2px 8px rgba(0,0,0,.35);
+        }
+        #ttdfh-caret:hover, #ttdfh-caret:focus-visible { transform: scale(1.1); outline: none; }
+        #ttdfh-menu {
+          position: absolute;
+          right: 0;
+          bottom: 68px;
+          min-width: 210px;
+          max-width: 280px;
+          background: rgba(30, 20, 20, .98);
+          border: 1px solid rgba(255,255,255,.10);
+          border-radius: 12px;
+          padding: 6px;
+          box-shadow: 0 18px 50px rgba(0,0,0,.5);
+          z-index: 2147483647;
+        }
+        #ttdfh-menu .ttdfh-menu-item {
+          display: block;
+          width: 100%;
+          text-align: left;
+          background: transparent;
+          border: 0;
+          border-radius: 8px;
+          color: #fff;
+          font: 600 12.5px/1.3 system-ui, -apple-system, sans-serif;
+          padding: 9px 10px;
+          cursor: pointer;
+        }
+        #ttdfh-menu .ttdfh-menu-item:hover, #ttdfh-menu .ttdfh-menu-item:focus-visible {
+          background: rgba(255,255,255,.12);
+          outline: none;
+        }
+        #ttdfh-menu .ttdfh-menu-sep {
+          font: 700 10px/1.2 system-ui, sans-serif;
+          text-transform: uppercase;
+          letter-spacing: .05em;
+          color: rgba(255,255,255,.5);
+          padding: 8px 10px 4px;
+          border-top: 1px solid rgba(255,255,255,.08);
+          margin-top: 4px;
+        }
+        #ttdfh-menu .ttdfh-menu-sep:empty { padding: 0; margin: 4px 0; border-top: 1px solid rgba(255,255,255,.08); }
+        #ttdfh-fab-wrap .ttdfh-pop {
+          position: absolute;
+          right: 72px;
+          bottom: 0;
+          transform: translateX(12px);
+          width: max-content;
+          max-width: 250px;
+          background: rgba(30, 20, 20, .97);
+          border: 1px solid rgba(255,255,255,.09);
+          border-radius: 14px;
+          padding: 12px 14px;
+          color: #fff;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity .18s ease, transform .18s ease, visibility .18s;
+          box-shadow: 0 18px 50px rgba(0,0,0,.5);
+          text-align: left;
+        }
+        #ttdfh-fab-wrap .ttdfh-pop-title { font-size: 12.5px; font-weight: 700; margin-bottom: 7px; }
+        #ttdfh-fab-wrap .ttdfh-pop-kbd-row { display: flex; align-items: center; gap: 7px; font-size: 10.5px; opacity: .75; }
+        #ttdfh-fab-wrap kbd {
+          background: rgba(255,255,255,.12);
+          border: 1px solid rgba(255,255,255,.18);
+          border-bottom-width: 2px;
+          border-radius: 6px;
+          padding: 2px 6px;
+          font: 700 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+          color: #fff;
+        }
+        #ttdfh-fab-wrap:hover .ttdfh-pop, #ttdfh-fab-wrap:focus-within .ttdfh-pop {
+          opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(0);
+        }
+        @media (max-width: 480px) {
+          #ttdfh-fab-wrap .ttdfh-pop { right: 0; bottom: 70px; transform: translateY(12px); }
+          #ttdfh-fab-wrap:hover .ttdfh-pop, #ttdfh-fab-wrap:focus-within .ttdfh-pop { transform: translateY(0); }
+        }
+        @keyframes ttdfh-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes ttdfh-spin { to { transform: rotate(360deg); } }
+        @keyframes ttdfh-toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) {
+          #${BTN_ID} { animation: none; transition: none; }
+          #${BTN_ID}:hover, #${BTN_ID}:focus-visible, #${BTN_ID}:active { transform: none; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    function removeButton() {
+      const wrap = document.getElementById("ttdfh-fab-wrap");
+      if (wrap) wrap.remove();
+      const style = document.getElementById(STYLE_ID);
+      if (style) style.remove();
+    }
+
+    function updateLabel(type) {
+      const label = formLabel(type);
+      const btn = document.getElementById(BTN_ID);
+      if (btn) btn.setAttribute("aria-label", label + ". Shortcut: " + shortcutFull);
+      const title = document.getElementById("ttdfh-pop-title");
+      if (title) title.textContent = label;
+    }
+
+    // ---- Right-click / long-press / caret menu (keyboard-reachable) ----
+    let menuOpen = false;
+    function closeMenu() {
+      const menu = document.getElementById("ttdfh-menu");
+      if (menu) menu.hidden = true;
+      menuOpen = false;
+    }
+    function menuItem(label, onClick) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "ttdfh-menu-item";
+      b.setAttribute("role", "menuitem");
+      b.textContent = label;
+      b.addEventListener("click", () => {
+        closeMenu();
+        onClick();
+      });
+      return b;
+    }
+    function menuSeparator(label) {
+      const d = document.createElement("div");
+      d.className = "ttdfh-menu-sep";
+      if (label) d.textContent = label;
+      return d;
+    }
+    async function openMenu() {
+      const menu = document.getElementById("ttdfh-menu");
+      if (!menu) return;
+      menu.innerHTML = "";
+      const type = detectFormType();
+      if (type === "pilgrim") {
+        menu.appendChild(menuItem("⚡ Fill all (empty rows)", () => onFillClick()));
+        menu.appendChild(menuItem("♻️ Fill all (overwrite)", () => onFillClick({ overwrite: true })));
+        menu.appendChild(menuItem("① Fill next empty pilgrim", () => runGuarded(runSinglePilgrim)));
+        menu.appendChild(menuItem("✉️ Fill contact only", () => runGuarded(runContactOnly)));
+        menu.appendChild(menuItem("⏭️ Fill all & Continue", () => runGuarded(() => runPilgrimFill({ thenContinue: true }))));
+        const { sets, locked } = await readSetsAndVault();
+        if (!locked && Array.isArray(sets) && sets.length) {
+          let lastUsed = "";
+          try {
+            lastUsed = (await chrome.storage.local.get(["lastUsedSet"])).lastUsedSet || "";
+          } catch {}
+          menu.appendChild(menuSeparator("Saved sets"));
+          sets.slice(0, 8).forEach((s) => {
+            const star = s.id === lastUsed ? "★ " : "";
+            menu.appendChild(menuItem(star + "👥 " + (s.name || "Unnamed set"), () => runGuarded(() => runFillFromSet(s.id, false))));
+          });
+        }
+      } else if (type === "senior") {
+        menu.appendChild(menuItem("👴 Fill senior citizen + spouse, attach age proof", () => onFillClick()));
+        menu.appendChild(menuItem("♻️ Fill (overwrite)", () => onFillClick({ overwrite: true })));
+        menu.appendChild(menuItem("⏭️ Fill & Continue", () => runGuarded(() => runSeniorFill({ thenContinue: true }), { qc: false })));
+        menu.appendChild(menuItem("✉️ Fill contact only", () => runGuarded(runContactOnly)));
+      } else if (type === "srivani") {
+        menu.appendChild(menuItem("🪔 Fill Srivani", () => runGuarded(runSrivaniFill)));
+        menu.appendChild(menuItem("⏭️ Fill Srivani & Continue", () => runGuarded(() => runSrivaniFill({ thenContinue: true }))));
+      } else if (type === "seva") {
+        if (isGroupSevaPage()) {
+          const { members, locked } = await loadGroupMembers();
+          if (locked) {
+            menu.appendChild(menuItem("🔒 Group data locked — use the popup", () => {}));
+          } else if (members.length) {
+            menu.appendChild(menuSeparator("Group members"));
+            members.forEach(({ member, index }) => {
+              const nm = member.sevakName || member.spvrName || "Member " + (index + 1);
+              menu.appendChild(menuItem("🙏 Fill member " + (index + 1) + " — " + nm, () => runGuarded(() => fillSevaMemberReport(member, index))));
+            });
+          } else {
+            menu.appendChild(menuItem("No group members saved — use the popup", () => {}));
+          }
+        } else {
+          menu.appendChild(menuItem("🙏 Fill Sevak", () => runGuarded(runSevaFill)));
+        }
+      } else {
+        menu.appendChild(menuItem("Open a TTD booking form first", () => {}));
+      }
+      menu.appendChild(menuSeparator());
+      menu.appendChild(menuItem("↩️ Undo / clear filled fields", () => runGuarded(clearFilled, { log: false })));
+      menu.hidden = false;
+      menuOpen = true;
+      const first = menu.querySelector(".ttdfh-menu-item");
+      if (first) first.focus();
+    }
+    function toggleMenu() {
+      if (menuOpen) closeMenu();
+      else openMenu();
+    }
+
+    function injectButton(type) {
+      if (document.getElementById(BTN_ID)) {
+        updateLabel(type);
+        return;
+      }
+      ensureStyles();
+      const wrap = document.createElement("div");
+      wrap.id = "ttdfh-fab-wrap";
+
+      const progress = document.createElement("div");
+      progress.id = "ttdfh-progress";
+      progress.setAttribute("aria-hidden", "true");
+      progress.style.display = "none";
+      wrap.appendChild(progress);
+
+      const menu = document.createElement("div");
+      menu.id = "ttdfh-menu";
+      menu.setAttribute("role", "menu");
+      menu.setAttribute("aria-label", "Fill options");
+      menu.hidden = true;
+      menu.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeMenu();
+          const b = document.getElementById(BTN_ID);
+          if (b) b.focus();
+        }
+      });
+      wrap.appendChild(menu);
+
+      const btn = document.createElement("button");
+      btn.id = BTN_ID;
+      btn.type = "button";
+      btn.setAttribute("aria-label", formLabel(type) + ". Shortcut: " + shortcutFull + ". Right-click or use the ▾ menu for more options.");
+      btn.setAttribute("aria-haspopup", "menu");
+      btn.innerHTML = '<span class="ttdfh-icon" aria-hidden="true">⚡</span><span class="ttdfh-kbd" aria-hidden="true">' + shortcutLabel + "</span>";
+      btn.addEventListener("click", () => onFillClick());
+      btn.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        openMenu();
+      });
+      // Long-press on touch devices opens the menu.
+      let pressTimer = null;
+      btn.addEventListener("touchstart", () => {
+        pressTimer = setTimeout(() => {
+          pressTimer = null;
+          openMenu();
+        }, 500);
+      }, { passive: true });
+      const cancelPress = () => {
+        if (pressTimer) {
+          clearTimeout(pressTimer);
+          pressTimer = null;
+        }
+      };
+      btn.addEventListener("touchend", cancelPress);
+      btn.addEventListener("touchmove", cancelPress);
+      wrap.appendChild(btn);
+
+      const caret = document.createElement("button");
+      caret.id = "ttdfh-caret";
+      caret.type = "button";
+      caret.setAttribute("aria-label", "More fill options");
+      caret.setAttribute("aria-haspopup", "menu");
+      caret.textContent = "▾";
+      caret.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+      wrap.appendChild(caret);
+
+      const pop = document.createElement("div");
+      pop.className = "ttdfh-pop";
+      pop.setAttribute("role", "dialog");
+      pop.setAttribute("aria-label", "Fill booking details");
+      pop.innerHTML =
+        '<div class="ttdfh-pop-title" id="ttdfh-pop-title">' +
+        formLabel(type) +
+        '</div><div class="ttdfh-pop-kbd-row"><span>Shortcut</span><kbd>' +
+        (isMac ? "⌥" : "Alt") +
+        "</kbd><kbd>A</kbd></div>";
+      wrap.appendChild(pop);
+
+      document.body.appendChild(wrap);
+    }
+
+    // Re-runs on DOM changes so the button stays correct as the SPA moves
+    // between booking steps (pilgrim → seva → srivani) without a full reload.
+    function sync() {
+      const type = detectFormType();
+      if (type) injectButton(type);
+      else removeButton();
+    }
+
+    window.addEventListener("keydown", (e) => {
+      // Alt+A = normal fill (empty rows); Alt+Shift+A = overwrite existing values.
+      if (e.altKey && !e.ctrlKey && !e.metaKey && e.code === "KeyA") {
+        if (!hasBookingForm()) return;
+        e.preventDefault();
+        onFillClick({ overwrite: e.shiftKey });
+      }
+    });
+
+    // Close the options menu when clicking away from the button.
+    document.addEventListener("click", (e) => {
+      if (!menuOpen) return;
+      const wrap = document.getElementById("ttdfh-fab-wrap");
+      if (wrap && !wrap.contains(e.target)) closeMenu();
+    });
+
+    // Selector-health check: if this looks like a booking page but no known form
+    // is found once the SPA settles, hint the user (non-blocking) — once per page.
+    let healthChecked = false;
+    function looksLikeBookingUrl() {
+      const p = (location.pathname + location.search).toLowerCase();
+      return /book|darshan|seva|srivani|pilgrim|sevak|arjitha|homam/.test(p);
+    }
+    function selectorHealthCheck() {
+      if (healthChecked || !looksLikeBookingUrl() || detectFormType()) return;
+      healthChecked = true;
+      setTimeout(() => {
+        if (!detectFormType() && looksLikeBookingUrl()) {
+          toast("Page layout may have changed — open the extension popup to fill.", "warn");
+        }
+      }, 4000);
+    }
+
+    function boot() {
+      sync();
+      selectorHealthCheck();
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+    else boot();
+
+    let debounceTimer;
+    const observer = new MutationObserver(() => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(sync, 600);
+    });
+    if (document.body) observer.observe(document.body, { childList: true, subtree: true });
+  })();
+})();
